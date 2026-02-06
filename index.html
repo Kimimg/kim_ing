@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   
   <title>김현제의 AI 웹사이트 포트폴리오</title>
-  <meta name="description" content="데이터의 흐름에서 가치를 발견하는 금융 & 데이터 전문가 김현제의 포트폴리오입니다." />
+  <!-- ✍️ EDIT: 설명 문구 변경 -->
+  <meta name="description" content="눈에 띄는 이력서로 두드리려 합니다" />
   <meta property="og:title" content="김현제의 AI 웹사이트 포트폴리오" />
-  <meta property="og:description" content="눈에 띄는 이력서를 보여드리고 싶습니다!" />
+  <meta property="og:description" content="눈에 띄는 이력서로 두드리려 합니다" />
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
 
@@ -69,7 +70,7 @@
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
       max-width: var(--max); margin:0 auto; padding: 16px 24px;
-      flex-wrap: nowrap; /* 한 줄 유지 기본 */
+      flex-wrap: nowrap;
     }
     .brand{ display:flex; align-items:center; gap:12px; font-weight:800; font-size: 1.4rem; cursor: pointer; flex-shrink: 0; }
     .logo{
@@ -187,26 +188,27 @@
       .stats-bar { padding: 15px 10px; }
       
       .nav-inner { 
-        flex-wrap: wrap; 
+        flex-wrap: nowrap; /* 모바일에서도 한 줄 유지 */
         justify-content: space-between; 
-        padding: 12px 20px;
+        padding: 10px 16px;
+        gap: 8px;
       }
-      .brand { order: 1; }
-      .actions { order: 2; } /* 테마 아이콘을 로고 옆 오른쪽 끝으로 고정 */
+      .brand { font-size: 1.1rem; } /* 브랜드 텍스트 소폭 축소 */
       .menu { 
-        order: 3; 
-        width: 100%; 
-        margin-top: 12px; 
-        gap: 15px; 
-        font-size: 16px; 
-        flex-wrap: wrap; 
-        justify-content: center; 
+        gap: 12px; 
+        font-size: 13px; /* 모바일 메뉴 폰트 축소로 한 줄 확보 */
         display: flex !important; 
+        overflow-x: auto; /* 만약의 경우를 대비한 가로 스크롤 허용 */
+        scrollbar-width: none;
       }
+      .menu::-webkit-scrollbar { display: none; }
+      .actions { margin-left: 4px; }
     }
     
     @media (max-width: 500px) {
-      .menu { gap: 10px; font-size: 14px; }
+      .menu { gap: 10px; font-size: 11px; } /* 아주 작은 화면 대응 */
+      .brand span { font-size: 0.9rem; }
+      .logo { width: 30px; height: 30px; }
       .stats-bar { border-radius: 16px; }
       .stat-label { font-size: 0.55rem; }
       .hero-text h1 .top-line { font-size: 2.2rem; }
@@ -534,7 +536,7 @@
         <div class="card">
           <h4 style="margin:0 0 12px; color: var(--accent2);"><i data-lucide="sparkles" style="width:20px; vertical-align:middle; margin-right:8px;"></i> AI 활용 능력</h4>
           <ul style="font-size: 14px; color: var(--muted); padding-left: 20px; line-height: 1.8;">
-            <li>직무 맞춤형 프롬프트 엔지니어링을 통한 시나리오 기획 자동화</li>
+            <li>직무 맞춤형 프롬프트 엔니니어링을 통한 시나리오 기획 자동화</li>
             <li>AI 영상 생성 워크플로우 도입으로 제작 리드타임 75% 단축</li>
             <li>AI 답변 품질 검증을 위한 자체 QA 체크리스트 운용</li>
           </ul>
@@ -629,4 +631,3 @@
   </script>
 </body>
 </html>
-
