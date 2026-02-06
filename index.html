@@ -4,9 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   
-  <title>김현제 | Portfolio</title>
+  <!-- ✍️ EDIT: 홈페이지 제목 및 공유 미리보기 제목 수정 -->
+  <title>김현제의 AI 웹사이트 포트폴리오</title>
   <meta name="description" content="데이터의 흐름에서 가치를 발견하는 금융 & 데이터 전문가 김현제의 포트폴리오입니다." />
-  <meta property="og:title" content="김현제 | Portfolio" />
+  <meta property="og:title" content="김현제의 AI 웹사이트 포트폴리오" />
   <meta property="og:description" content="AI 기반 기획과 정밀한 데이터 분석 전문가" />
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
@@ -27,7 +28,6 @@
       --glassBorder: rgba(255,255,255,.12);
       --radius: 24px;
       --max: 1200px;
-      /* 아이콘 전용 그라데이션 */
       --iconGradient: linear-gradient(135deg, #6ea8ff, #7cffc5);
     }
     :root[data-theme="light"]{
@@ -91,7 +91,6 @@
     .hero-text h1 .bottom-line { font-size: clamp(1.4rem, 3.5vw, 2.4rem); background: linear-gradient(to right, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.9; }
     .hero-text p { font-size: 1.25rem; color: var(--muted); margin-bottom: 32px; max-width: 580px; }
     
-    /* Stats Bar Layout Updated for Photo Slot */
     .stats-bar{ 
       display: flex; 
       gap: 30px; 
@@ -108,7 +107,6 @@
     .stat-value { font-size: 1.8rem; font-weight: 800; color: var(--accent2); }
     .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
     
-    /* ✍️ EDIT: 사진 슬롯 스타일 */
     .photo-slot {
       width: 70px;
       height: 70px;
@@ -122,17 +120,8 @@
       flex-shrink: 0;
       position: relative;
     }
-    .photo-slot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .photo-placeholder {
-      font-size: 10px;
-      text-align: center;
-      color: var(--muted);
-      font-weight: bold;
-    }
+    .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-placeholder { font-size: 10px; text-align: center; color: var(--muted); font-weight: bold; }
 
     .card{ background: var(--card); border: 1px solid var(--glassBorder); border-radius: var(--radius); padding: 40px; box-shadow: 0 24px 48px var(--shadow); position: relative; overflow: hidden; }
     .card:hover{ transform: translateY(-10px); border-color: var(--accent); }
@@ -163,34 +152,20 @@
     .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
     @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
 
-    /* Theme Toggle Specific - Visibility Enhanced */
     .theme-toggle {
       background: var(--glass); border: 1px solid var(--glassBorder);
       width: 44px; height: 44px; border-radius: 14px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: all 0.3s ease;
     }
-    .theme-toggle:hover {
-      background: var(--accent);
-      border-color: var(--accent2);
-      transform: rotate(15deg);
-    }
-    .theme-toggle i {
-      stroke: url(#icon-gradient);
-      stroke-width: 2.5px;
-      filter: drop-shadow(0 0 8px rgba(110, 168, 255, 0.7));
-    }
+    .theme-toggle:hover { background: var(--accent); border-color: var(--accent2); transform: rotate(15deg); }
+    .theme-toggle i { stroke: url(#icon-gradient); stroke-width: 2.5px; filter: drop-shadow(0 0 8px rgba(110, 168, 255, 0.7)); }
 
-    /* 컬러 아이콘 공통 클래스 */
-    .icon-colored {
-        stroke: url(#icon-gradient);
-        filter: drop-shadow(0 0 5px rgba(110, 168, 255, 0.3));
-    }
+    .icon-colored { stroke: url(#icon-gradient); filter: drop-shadow(0 0 5px rgba(110, 168, 255, 0.3)); }
     .icon-insta { stroke: #E4405F; }
     .icon-phone { stroke: #25D366; }
     .icon-mail { stroke: #EA4335; }
 
-    /* Rest of Styles */
     .btn{ display:inline-flex; align-items:center; justify-content:center; gap:12px; padding: 16px 32px; border-radius: 18px; font-weight: 700; cursor:pointer; border: 1px solid var(--glassBorder); font-size: 16px; }
     .btn.primary{ background: linear-gradient(135deg, var(--accent), #4a90ff); color: white; border: none; box-shadow: 0 12px 24px rgba(110,168,255,0.3); }
     .btn.outline{ background: var(--glass); color: var(--text); }
@@ -206,16 +181,22 @@
     #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--accent); color: white; padding: 12px 24px; border-radius: 12px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1000; transition: 0.4s; opacity: 0; }
     #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
+    /* 📱 Responsive & Mobile Nav Fix */
     @media (max-width: 950px){ 
       .hero{ grid-template-columns: 1fr; text-align: center; } 
-      .menu { display: none; }
       .stats-bar { flex-direction: column; gap: 20px; }
       .stats-items-group { gap: 15px; }
+      /* 모바일 메뉴 보이게 수정 */
+      .menu { gap: 15px; font-size: 16px; flex-wrap: wrap; justify-content: center; }
+    }
+    
+    @media (max-width: 500px) {
+      .nav-inner { flex-direction: column; gap: 10px; }
+      .menu { gap: 10px; font-size: 14px; }
     }
   </style>
 </head>
 <body>
-  <!-- 아이콘 그라데이션 정의를 위한 숨은 SVG -->
   <svg width="0" height="0" style="position:absolute;">
     <defs>
       <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -239,27 +220,9 @@
         <a href="#contact" class="nav-link">연락처</a>
       </div>
       <div class="actions">
-<button
-  onclick="toggleTheme()"
-  id="themeBtn"
-  aria-label="테마 전환"
-  style="
-    width:42px !important;
-    height:42px !important;
-    border-radius:50% !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-
-    background-color:rgba(110,168,255,0.25) !important; /* ← 항상 색 보이게 */
-    border:1px solid rgba(255,255,255,0.2) !important;
-    box-shadow:0 4px 12px rgba(0,0,0,0.25) !important;
-
-    cursor:pointer !important;
-  "
->
-  <i data-lucide="sun-medium"></i>
-</button>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="테마 전환">
+          <i data-lucide="sun-medium"></i>
+        </button>
       </div>
     </div>
   </nav>
@@ -291,11 +254,7 @@
             </div>
           </div>
           
-          <!-- ✍️ EDIT: 이력서 사진을 넣을 공간 -->
           <div class="photo-slot" title="Hyeon Je Kim">
-            <!--  -->
-            <!-- 나중에 실제 이미지를 넣으려면 아래 주석을 해제하고 src에 경로를 넣으세요 -->
-            <!-- <img src="profile.jpg" alt="김현제 프로필"> -->
             <div class="photo-placeholder">PHOTO</div>
           </div>
         </div>
@@ -364,6 +323,63 @@
             </div>
           </div>
         </div>
+        <!-- ✍️ 추가된 경력 박스 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card">
+              <div class="exp-header">
+                <div>
+                  <h3 class="exp-title">추가 경력 타이틀 1</h3>
+                  <span class="exp-org">소속 기관명</span>
+                </div>
+                <span class="exp-period">기간 설정</span>
+              </div>
+              <ul class="exp-list">
+                <li>수행 업무 및 성과 내용을 입력하세요.</li>
+                <li>데이터 기반 문제 해결 사례를 기술하세요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- ✍️ 추가된 경력 박스 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card">
+              <div class="exp-header">
+                <div>
+                  <h3 class="exp-title">추가 경력 타이틀 2</h3>
+                  <span class="exp-org">소속 기관명</span>
+                </div>
+                <span class="exp-period">기간 설정</span>
+              </div>
+              <ul class="exp-list">
+                <li>수행 업무 및 성과 내용을 입력하세요.</li>
+                <li>AI 활용 사례를 구체적으로 기술하세요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- ✍️ 추가된 경력 박스 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card">
+              <div class="exp-header">
+                <div>
+                  <h3 class="exp-title">추가 경력 타이틀 3</h3>
+                  <span class="exp-org">소속 기관명</span>
+                </div>
+                <span class="exp-period">기간 설정</span>
+              </div>
+              <ul class="exp-list">
+                <li>수행 업무 및 성과 내용을 입력하세요.</li>
+                <li>조직 내 기여도를 수치화하여 기술하세요.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -379,6 +395,18 @@
           <div class="tag">Analysis</div>
           <h3 style="margin: 0 0 20px;">부동산 시세 정밀 분석</h3>
           <p style="color:var(--muted); font-size:14px;">엑셀 VBA 및 통계 로직을 활용해 5만 건 이상의 데이터 속 이상치를 자동 탐지하는 시스템을 구축했습니다.</p>
+        </div>
+        <!-- ✍️ 추가된 성과 박스 1 -->
+        <div class="card">
+          <div class="tag">AI Strategy</div>
+          <h3 style="margin: 0 0 20px;">새로운 성과 프로젝트 1</h3>
+          <p style="color:var(--muted); font-size:14px;">프로젝트의 핵심 내용과 달성한 성과를 한 문장으로 요약하여 입력하세요.</p>
+        </div>
+        <!-- ✍️ 추가된 성과 박스 2 -->
+        <div class="card">
+          <div class="tag">Data Insights</div>
+          <h3 style="margin: 0 0 20px;">새로운 성과 프로젝트 2</h3>
+          <p style="color:var(--muted); font-size:14px;">사용한 기술 스택과 비즈니스 임팩트를 중심으로 기술하세요.</p>
         </div>
       </div>
     </section>
@@ -404,7 +432,6 @@
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> TOEIC (2025.07)</div>
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 매경TEST (2024.12)</div>
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 데이터분석준전문가 ADsP (2024.09)</div>
-            <!-- ✍️ EDIT: 면허 추가 -->
             <div class="badge"><i data-lucide="car" class="icon-colored"></i> 2종 보통 운전면허</div>
           </div>
         </div>
@@ -414,7 +441,6 @@
     <section id="contact" style="margin: 120px 0; text-align: center;">
       <h2 class="section-title">Get In Touch</h2>
       <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
-        <!-- Email -->
         <div class="contact-card">
           <div class="contact-info">
             <div class="contact-icon"><i data-lucide="mail" class="icon-mail"></i></div>
@@ -422,8 +448,6 @@
           </div>
           <div class="copy-btn" onclick="copyText('k.hyeonje38@gmail.com')"><i data-lucide="copy"></i></div>
         </div>
-        
-        <!-- Instagram -->
         <div class="contact-card">
           <div class="contact-info">
             <div class="contact-icon"><i data-lucide="instagram" class="icon-insta"></i></div>
@@ -431,8 +455,6 @@
           </div>
           <a href="https://instagram.com/geemyeonje" target="_blank" class="copy-btn"><i data-lucide="external-link"></i></a>
         </div>
-
-        <!-- Phone -->
         <div class="contact-card">
           <div class="contact-info">
             <div class="contact-icon"><i data-lucide="phone" class="icon-phone"></i></div>
@@ -444,7 +466,6 @@
     </section>
   </main>
 
-  <!-- AI Chat Widget -->
   <div class="chat-widget">
     <div class="chat-panel" id="chatPanel">
       <div class="chat-header">
@@ -479,7 +500,7 @@
       학력: 국립강릉원주대학교 경영학 전공 (평점 3.88/4.5)
       경력: 한국부동산원 강릉지사 AI·데이터 기반 행정 지원 인턴 (2026.01~재직중)
       자격증: 투자자산운용사, 데이터분석준전문가(ADsP), TOEIC 810점, 매경TEST(보통), 2종 보통 운전면허
-      기술: Excel Expert (VBA), 프롬프트 엔지니어링, 시장 분석, 데이터 정제
+      기술: Excel Expert (VBA), 프롬프트 엔지니어링, 시장 분석, 데이터 정제, Leadership, Communication, Collaboration
       프로젝트: AI 기반 교육 콘텐츠 혁신(공기업 영상 제작 40% 단축), 부동산 시세 정밀 분석 시스템 구축(5만건 데이터 분석)
     `;
 
@@ -613,7 +634,4 @@
     observer.observe(document.getElementById('about'));
   </script>
 </body>
-
 </html>
-
-
