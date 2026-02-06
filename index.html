@@ -90,37 +90,43 @@
     .hero-text h1 .bottom-line { font-size: clamp(1.4rem, 3.5vw, 2.4rem); background: linear-gradient(to right, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.9; }
     .hero-text p { font-size: 1.25rem; color: var(--muted); margin-bottom: 32px; max-width: 580px; }
     
+    /* Stats Bar - 5 items horizontally */
     .stats-bar{ 
       display: flex; 
-      gap: 30px; 
+      gap: 15px; 
       margin-top: 50px; 
-      padding: 25px; 
+      padding: 20px; 
       background: var(--glass); 
       border-radius: 24px; 
       border: 1px solid var(--glassBorder);
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
+      width: 100%;
     }
-    .stats-items-group { display: flex; gap: 30px; }
-    .stat-item { display: flex; flex-direction: column; }
-    .stat-value { font-size: 1.8rem; font-weight: 800; color: var(--accent2); }
-    .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
-    
-    .photo-slot {
-      width: 75px;
-      height: 75px;
-      border-radius: 16px;
-      background: var(--card);
-      border: 2px solid var(--glassBorder);
-      overflow: hidden;
+    .stats-items-group { 
+      display: flex; 
+      gap: 15px; 
+      flex-wrap: nowrap; /* 한 줄 유지 */
+      justify-content: space-between; 
+      width: 100%; 
+    }
+    .stat-item { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center;
+      flex: 1;
+    }
+    /* 숫자와 단위를 묶어주는 컨테이너 */
+    .stat-value-wrap {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: center;
-      flex-shrink: 0;
-      position: relative;
+      white-space: nowrap; /* 텍스트가 절대 끊기지 않게 함 */
+      gap: 1px;
     }
-    .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
-    .photo-placeholder { font-size: 10px; text-align: center; color: var(--muted); font-weight: bold; }
+    .stat-value { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800; color: var(--accent2); }
+    .stat-label { font-size: clamp(0.6rem, 1.5vw, 0.75rem); color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; white-space: nowrap; }
 
     .card{ background: var(--card); border: 1px solid var(--glassBorder); border-radius: var(--radius); padding: 40px; box-shadow: 0 24px 48px var(--shadow); position: relative; overflow: hidden; }
     .card:hover{ transform: translateY(-10px); border-color: var(--accent); }
@@ -128,24 +134,34 @@
     .section-title{ font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -1.5px; }
     .section-desc{ color: var(--muted); margin-bottom: 60px; font-size: 1.15rem; max-width: 750px; }
 
-    /* Theme Toggle - Visibility Fix */
+    /* Theme Toggle - 세련된 배경색 적용 */
     .theme-toggle {
-      background: var(--glass); border: 1px solid var(--glassBorder);
-      width: 44px; height: 44px; border-radius: 14px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      background: var(--iconGradient);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(110, 168, 255, 0.4);
     }
     .theme-toggle i { 
-      color: var(--text); 
-      stroke: var(--text);
+      color: white !important;
+      stroke: white !important;
       stroke-width: 2.5px;
     }
-    .theme-toggle:hover { border-color: var(--accent); transform: rotate(15deg); }
+    .theme-toggle:hover { 
+        transform: rotate(15deg) scale(1.1); 
+        box-shadow: 0 6px 20px rgba(110, 168, 255, 0.6);
+    }
 
     .icon-colored { stroke: url(#icon-gradient); filter: drop-shadow(0 0 5px rgba(110, 168, 255, 0.3)); }
     .icon-insta { stroke: #E4405F; }
     .icon-phone { stroke: #25D366; }
-    .icon-mail { stroke: #EA4335; }
+    .icon-mail { stroke: #4285F4; } 
 
     .btn{ display:inline-flex; align-items:center; justify-content:center; gap:12px; padding: 16px 32px; border-radius: 18px; font-weight: 700; cursor:pointer; border: 1px solid var(--glassBorder); font-size: 16px; }
     .btn.primary{ background: linear-gradient(135deg, var(--accent), #4a90ff); color: white; border: none; box-shadow: 0 12px 24px rgba(110,168,255,0.3); }
@@ -165,38 +181,17 @@
     #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--accent); color: white; padding: 12px 24px; border-radius: 12px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1000; transition: 0.4s; opacity: 0; }
     #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-    /* AI Feature Elements */
-    .ai-btn { background: linear-gradient(135deg, #8e2de2, #4a00e0); color: white; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; margin-top: 20px; box-shadow: 0 4px 15px rgba(142, 45, 226, 0.3); }
-    .ai-btn:hover { transform: scale(1.05); filter: brightness(1.2); }
-    .ai-result-box { margin-top: 15px; padding: 15px; background: rgba(142, 45, 226, 0.1); border: 1px solid rgba(142, 45, 226, 0.3); border-radius: 12px; display: none; font-size: 14px; color: var(--text); border-left: 4px solid #8e2de2; }
-
-    /* Floating Chat UI */
-    .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; }
-    .chat-button { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-size: 24px; }
-    .chat-panel { width: 350px; height: 500px; background: var(--card); border: 1px solid var(--glassBorder); border-radius: 20px; display: none; flex-direction: column; margin-bottom: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden; }
-    .chat-header { padding: 15px 20px; background: var(--glass); border-bottom: 1px solid var(--glassBorder); font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-    .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-    .message { max-width: 80%; padding: 10px 15px; border-radius: 15px; font-size: 13px; }
-    .message.user { align-self: flex-end; background: var(--accent); color: white; }
-    .message.ai { align-self: flex-start; background: var(--glass); color: var(--text); border: 1px solid var(--glassBorder); }
-    .chat-input-area { padding: 15px; background: var(--glass); display: flex; gap: 10px; border-top: 1px solid var(--glassBorder); }
-    .chat-input { flex: 1; background: var(--bg); border: 1px solid var(--glassBorder); border-radius: 10px; padding: 8px 12px; color: var(--text); outline: none; }
-    .chat-send { background: var(--accent); color: white; border: none; padding: 8px 12px; border-radius: 10px; cursor: pointer; }
-    .loading-dots span { width: 4px; height: 4px; background: currentColor; border-radius: 50%; display: inline-block; animation: bounce 1.4s infinite ease-in-out both; }
-    .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
-    .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
-    @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-
     @media (max-width: 950px){ 
       .hero{ grid-template-columns: 1fr; text-align: center; } 
-      .stats-bar { flex-direction: column; gap: 20px; }
-      .stats-items-group { gap: 15px; }
+      .stats-bar { padding: 15px 10px; }
       .menu { gap: 15px; font-size: 16px; flex-wrap: wrap; justify-content: center; display: flex !important; }
     }
     
     @media (max-width: 500px) {
       .nav-inner { flex-direction: column; gap: 10px; }
       .menu { gap: 10px; font-size: 14px; }
+      .stats-bar { border-radius: 16px; }
+      .stat-label { font-size: 0.55rem; }
     }
   </style>
 </head>
@@ -243,24 +238,39 @@
         </h1>
         <p>국립강릉원주대학교 경영학 전공. 저만의 특별한 포트폴리오를 제작하기 위해 AI와 친해지는 중입니다.</p>
         
+        <!-- ✍️ MODIFIED: Stats Bar (5 items, No photo, One-line labels) -->
         <div class="stats-bar">
           <div class="stats-items-group">
             <div class="stat-item">
-              <span class="stat-value counter" data-target="26">0</span><span class="stat-value">세</span>
+              <div class="stat-value-wrap">
+                <span class="stat-value counter" data-target="26">0</span><span class="stat-value">세</span>
+              </div>
               <span class="stat-label">현재 나이</span>
             </div>
             <div class="stat-item">
-              <span class="stat-value counter" data-target="3.88">0</span><span class="stat-value">/4.5</span>
+              <div class="stat-value-wrap">
+                <span class="stat-value counter" data-target="3.88">0</span><span class="stat-value">/4.5</span>
+              </div>
               <span class="stat-label">전체 평점</span>
             </div>
             <div class="stat-item">
-              <span class="stat-value counter" data-target="810">0</span><span class="stat-value">/990</span>
-              <span class="stat-label">TOEIC SCORE</span>
+              <div class="stat-value-wrap">
+                <span class="stat-value counter" data-target="25">0</span><span class="stat-value">+</span>
+              </div>
+              <span class="stat-label">프로젝트</span>
             </div>
-          </div>
-          
-          <div class="photo-slot">
-            <div class="photo-placeholder">PHOTO</div>
+            <div class="stat-item">
+              <div class="stat-value-wrap">
+                <span class="stat-value counter" data-target="5">0</span><span class="stat-value">개</span>
+              </div>
+              <span class="stat-label">총 자격증</span>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value-wrap">
+                <span class="stat-value counter" data-target="810">0</span><span class="stat-value">점</span>
+              </div>
+              <span class="stat-label">TOEIC</span>
+            </div>
           </div>
         </div>
 
@@ -279,7 +289,7 @@
       </div>
     </section>
 
-    <!-- ADDED: Why Me Section -->
+    <!-- SECTION: Why Me -->
     <section id="why-me" style="margin-top: 80px;">
       <h2 class="section-title">Why Me</h2>
       <p class="section-desc">비즈니스 도메인 지식과 데이터/AI 기술을 결합하여 실질적인 해결책을 제시합니다.</p>
@@ -304,16 +314,6 @@
         <a href="#contact" class="btn primary">바로 연락하기 <i data-lucide="send"></i></a>
         <a href="resume.pdf" target="_blank" class="btn outline">1페이지 이력 요약 보기 <i data-lucide="file-text"></i></a>
         <a href="#case-studies" class="btn outline">프로젝트 케이스 스터디 <i data-lucide="folder-kanban"></i></a>
-      </div>
-    </section>
-
-    <!-- SECTION: AI Intro -->
-    <section id="ai-intro" style="margin-top: 100px;">
-      <div class="card" style="background: linear-gradient(135deg, rgba(142, 45, 226, 0.05), rgba(74, 0, 224, 0.05)); border: 1px solid rgba(142, 45, 226, 0.2);">
-        <h3 style="margin:0;"><i data-lucide="sparkle" style="color:#8e2de2"></i> AI 커리어 요약 서비스</h3>
-        <p style="color: var(--muted); font-size: 14px; margin-top: 8px;">Gemini가 김현제의 핵심 역량을 한 문장으로 요약해 드립니다.</p>
-        <button class="ai-btn" id="generateSummary">✨ 역량 요약 제안받기</button>
-        <div class="ai-result-box" id="summaryResult"></div>
       </div>
     </section>
 
@@ -357,6 +357,7 @@
             </div>
           </div>
         </div>
+        <!-- 추가 경력 1 -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -375,6 +376,7 @@
             </div>
           </div>
         </div>
+        <!-- 추가 경력 2 -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -393,6 +395,7 @@
             </div>
           </div>
         </div>
+        <!-- 추가 경력 3 -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -441,13 +444,11 @@
       </div>
     </section>
 
-    <!-- ADDED: Case Studies Section -->
+    <!-- SECTION: Case Studies -->
     <section id="case-studies" style="margin-top: 120px;">
       <h2 class="section-title">Case Studies</h2>
       <p class="section-desc">문제 해결 과정과 성과를 상세히 분석한 실무 케이스입니다.</p>
-      
       <div style="display: flex; flex-direction: column; gap: 40px;">
-        <!-- Case 1 -->
         <div class="card">
           <div class="badge-container" style="margin-bottom: 24px;">
             <div class="badge"><i data-lucide="clock"></i> 제작시간 40%↓</div>
@@ -455,26 +456,15 @@
           </div>
           <h3 style="margin: 0 0 24px;">AI 기반 교육 콘텐츠 제작 효율화</h3>
           <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div>
-              <h5 style="color:var(--accent2); margin-bottom:10px;">Problem</h5>
-              <p style="font-size:14px; color:var(--muted); line-height:1.7;">전통적인 교육 영상 제작 방식의 높은 비용과 긴 리드타임으로 인한 적시 교육의 어려움.</p>
-            </div>
-            <div>
-              <h5 style="color:var(--accent2); margin-bottom:10px;">Approach</h5>
-              <p style="font-size:14px; color:var(--muted); line-height:1.7;">LLM을 통한 시나리오 초안 작성과 가상 인간 AI 영상 툴을 결합한 하이브리드 제작 파이프라인 설계.</p>
-            </div>
-            <div>
-              <h5 style="color:var(--accent2); margin-bottom:10px;">Result</h5>
-              <p style="font-size:14px; color:var(--muted); line-height:1.7;">기존 1개월 소요 공정을 1주일 이내로 단축. 고퀄리티 교육 영상의 지속적인 발행 가능 환경 구축.</p>
-            </div>
+            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Problem</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">전통적인 교육 영상 제작 방식의 높은 비용과 긴 리드타임으로 인한 적시 교육의 어려움.</p></div>
+            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Approach</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">LLM을 통한 시나리오 초안 작성과 가상 인간 AI 영상 툴을 결합한 하이브리드 제작 파이프라인 설계.</p></div>
+            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Result</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">기존 1개월 소요 공정을 1주일 이내로 단축. 고퀄리티 교육 영상의 지속적인 발행 가능 환경 구축.</p></div>
           </div>
           <div style="margin-top: 32px; display: flex; gap: 12px; border-top: 1px solid var(--glassBorder); padding-top: 24px;">
             <button class="btn primary small" onclick="alert('샘플 이미지를 준비 중입니다.')">산출물 스크린샷 <i data-lucide="image"></i></button>
             <button class="btn outline small" onclick="alert('작업 과정 문서를 준비 중입니다.')">작업 과정 문서 <i data-lucide="file-text"></i></button>
           </div>
         </div>
-
-        <!-- Case 2 -->
         <div class="card">
           <div class="badge-container" style="margin-bottom: 24px;">
             <div class="badge"><i data-lucide="layers"></i> 50,000+ rows</div>
@@ -482,18 +472,9 @@
           </div>
           <h3 style="margin: 0 0 24px;">부동산 데이터 이상치 탐지 자동화</h3>
           <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div>
-              <h5 style="color:var(--accent); margin-bottom:10px;">Problem</h5>
-              <p style="font-size:14px; color:var(--muted); line-height:1.7;">수만 건의 실거래 데이터 중 전수 조사가 불가능한 이상 거래 및 데이터 오류 식별의 한계.</p>
-            </div>
-            <div>
-              <h5 style="color:var(--accent); margin-bottom:10px;">Approach</h5>
-              <p style="font-size:14px; color:var(--muted); line-height:1.7;">VBA와 통계적 기법을 적용하여 지역별 표준 편차를 벗어나는 데이터를 즉각 하이라이트하는 검증 도구 개발.</p>
-            </div>
-            <div>
-              <h5 style="color:var(--accent); margin-bottom:10px;">Result</h5>
-              <p style="font-size:14px; color:var(--muted); line-height:1.7;">오류 검토 누락률 0% 달성. 데이터 클렌징 작업 시간을 수작업 대비 90% 이상 절감하는 성과 도출.</p>
-            </div>
+            <div><h5 style="color:var(--accent); margin-bottom:10px;">Problem</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">수만 건의 실거래 데이터 중 전수 조사가 불가능한 이상 거래 및 데이터 오류 식별의 한계.</p></div>
+            <div><h5 style="color:var(--accent); margin-bottom:10px;">Approach</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">VBA와 통계적 기법을 적용하여 지역별 표준 편차를 벗어나는 데이터를 즉각 하이라이트하는 검증 도구 개발.</p></div>
+            <div><h5 style="color:var(--accent); margin-bottom:10px;">Result</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">오류 검토 누락률 0% 달성. 데이터 클렌징 작업 시간을 수작업 대비 90% 이상 절감하는 성과 도출.</p></div>
           </div>
           <div style="margin-top: 32px; display: flex; gap: 12px; border-top: 1px solid var(--glassBorder); padding-top: 24px;">
             <button class="btn primary small" onclick="alert('리포트 샘플을 준비 중입니다.')">리포트 예시 <i data-lucide="bar-chart"></i></button>
@@ -531,7 +512,7 @@
       </div>
     </section>
 
-    <!-- ADDED: Skill Evidence Section -->
+    <!-- SECTION: Skill Evidence -->
     <section id="skill-evidence" style="margin-top: 60px;">
       <h2 class="section-title">Skill Evidence</h2>
       <p class="section-desc">실제 업무 및 프로젝트를 통해 증명된 역량의 근거입니다.</p>
@@ -566,56 +547,17 @@
     <!-- SECTION: Contact -->
     <section id="contact" style="margin: 120px 0; text-align: center;">
       <h2 class="section-title">Get In Touch</h2>
-      <!-- ADDED: Contact CTA Buttons -->
       <div style="display: flex; gap: 16px; margin: 0 auto 40px; justify-content: center; flex-wrap: wrap;">
         <a href="mailto:k.hyeonje38@gmail.com" class="btn primary">이메일 보내기 <i data-lucide="mail"></i></a>
         <a href="resume.pdf" target="_blank" class="btn outline">이력서 PDF 보기 <i data-lucide="external-link"></i></a>
       </div>
-
       <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
-        <div class="contact-card">
-          <div class="contact-info">
-            <div class="contact-icon"><i data-lucide="mail" class="icon-mail"></i></div>
-            <div class="contact-text"><h4>Email</h4><p>k.hyeonje38@gmail.com</p></div>
-          </div>
-          <div class="copy-btn" onclick="copyText('k.hyeonje38@gmail.com')"><i data-lucide="copy"></i></div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-info">
-            <div class="contact-icon"><i data-lucide="instagram" class="icon-insta"></i></div>
-            <div class="contact-text"><h4>Instagram</h4><p>@geemyeonje</p></div>
-          </div>
-          <a href="https://instagram.com/geemyeonje" target="_blank" class="copy-btn"><i data-lucide="external-link"></i></a>
-        </div>
-        <div class="contact-card">
-          <div class="contact-info">
-            <div class="contact-icon"><i data-lucide="phone" class="icon-phone"></i></div>
-            <div class="contact-text"><h4>Phone</h4><p>010-8473-5332</p></div>
-          </div>
-          <div class="copy-btn" onclick="copyText('010-8473-5332')"><i data-lucide="copy"></i></div>
-        </div>
+        <div class="contact-card"><div class="contact-info"><div class="contact-icon"><i data-lucide="mail" class="icon-mail"></i></div><div class="contact-text"><h4>Email</h4><p>k.hyeonje38@gmail.com</p></div></div><div class="copy-btn" onclick="copyText('k.hyeonje38@gmail.com')"><i data-lucide="copy"></i></div></div>
+        <div class="contact-card"><div class="contact-info"><div class="contact-icon"><i data-lucide="instagram" class="icon-insta"></i></div><div class="contact-text"><h4>Instagram</h4><p>@geemyeonje</p></div></div><a href="https://instagram.com/geemyeonje" target="_blank" class="copy-btn"><i data-lucide="external-link"></i></a></div>
+        <div class="contact-card"><div class="contact-info"><div class="contact-icon"><i data-lucide="phone" class="icon-phone"></i></div><div class="contact-text"><h4>Phone</h4><p>010-8473-5332</p></div></div><div class="copy-btn" onclick="copyText('010-8473-5332')"><i data-lucide="copy"></i></div></div>
       </div>
     </section>
   </main>
-
-  <div class="chat-widget">
-    <div class="chat-panel" id="chatPanel">
-      <div class="chat-header">
-        <span>✨ AI 커리어 도우미</span>
-        <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;"><i data-lucide="x" class="icon-colored"></i></button>
-      </div>
-      <div class="chat-messages" id="chatMessages">
-        <div class="message ai">반갑습니다! 김현제 님에 대해 궁금한 점을 물어보세요. (예: "이분의 강점은 무엇인가요?")</div>
-      </div>
-      <div class="chat-input-area">
-        <input type="text" class="chat-input" id="chatInput" placeholder="질문을 입력하세요...">
-        <button class="chat-send" id="chatSend"><i data-lucide="send"></i></button>
-      </div>
-    </div>
-    <button class="chat-button" onclick="toggleChat()">
-      <i data-lucide="message-square"></i>
-    </button>
-  </div>
 
   <footer class="wrap" style="border-top: 1px solid var(--glassBorder); text-align: center; padding: 40px 24px; color: var(--muted); font-size: 14px;">
     <p>&copy; 2026 Kim Hyeon Je. Built with Intelligence.</p>
@@ -624,98 +566,8 @@
   <div id="toast">복사되었습니다!</div>
 
   <script>
-    // Initialize Lucide Icons on Load
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
-    });
-
-    const apiKey = "";
-    const resumeContext = `
-      후보자 이름: 김현제 (Kim Hyeon Je)
-      학력: 국립강릉원주대학교 경영학 전공 (평점 3.88/4.5)
-      경력: 한국부동산원 강릉지사 AI·데이터 기반 행정 지원 인턴 (2026.01~재직중)
-      자격증: 투자자산운용사, 데이터분석준전문가(ADsP), TOEIC 810점, 매경TEST(보통), 2종 보통 운전면허
-      기술: Excel Expert (VBA), 프롬프트 엔지니어링, 시장 분석, 데이터 정제, Leadership, Communication, Collaboration
-      프로젝트: AI 기반 교육 콘텐츠 혁신(공기업 영상 제작 40% 단축), 부동산 시세 정밀 분석 시스템 구축(5만건 데이터 분석)
-    `;
-
-    async function callGemini(prompt, systemInstruction = "") {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-      const payload = {
-        contents: [{ parts: [{ text: prompt }] }],
-        systemInstruction: { parts: [{ text: systemInstruction }] }
-      };
-
-      let delay = 1000;
-      for (let i = 0; i < 5; i++) {
-        try {
-          const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          const data = await response.json();
-          return data.candidates?.[0]?.content?.parts?.[0]?.text || "답변을 가져오는 데 실패했습니다.";
-        } catch (error) {
-          if (i === 4) throw error;
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2;
-        }
-      }
-    }
-
-    document.getElementById('generateSummary').addEventListener('click', async () => {
-      const btn = document.getElementById('generateSummary');
-      const resultBox = document.getElementById('summaryResult');
-      btn.disabled = true;
-      btn.innerHTML = `✨ 분석 중... <span class="loading-dots"><span></span><span></span><span></span></span>`;
-      try {
-        const prompt = `${resumeContext}\n위 이력을 바탕으로 이 후보자를 채용해야 하는 이유를 강력한 한 문장으로 요약해줘. 정중하고 전문적인 톤으로 작성해.`;
-        const summary = await callGemini(prompt, "너는 채용 전문가야.");
-        resultBox.innerHTML = summary;
-        resultBox.style.display = 'block';
-      } catch (e) {
-        showToast("AI 통신 중 에러가 발생했습니다.");
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = `✨ 역량 요약 제안받기`;
-      }
-    });
-
-    function toggleChat() {
-      const panel = document.getElementById('chatPanel');
-      panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-    async function sendMessage() {
-      const input = document.getElementById('chatInput');
-      const container = document.getElementById('chatMessages');
-      const query = input.value.trim();
-      if (!query) return;
-      const userMsg = document.createElement('div');
-      userMsg.className = 'message user';
-      userMsg.innerText = query;
-      container.appendChild(userMsg);
-      input.value = '';
-      container.scrollTop = container.scrollHeight;
-      const aiMsg = document.createElement('div');
-      aiMsg.className = 'message ai';
-      aiMsg.innerHTML = `<span class="loading-dots"><span></span><span></span><span></span></span>`;
-      container.appendChild(aiMsg);
-      container.scrollTop = container.scrollHeight;
-      try {
-        const system = `너는 김현제의 포트폴리오 사이트에서 방문자를 돕는 비서야. 제공된 [Context]를 바탕으로만 답변해. [Context]: ${resumeContext}`;
-        const response = await callGemini(query, system);
-        aiMsg.innerText = response;
-      } catch (e) {
-        aiMsg.innerText = "죄송합니다. 현재 AI 답변이 불가능합니다.";
-      }
-      container.scrollTop = container.scrollHeight;
-    }
-
-    document.getElementById('chatSend').addEventListener('click', sendMessage);
-    document.getElementById('chatInput').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendMessage();
     });
 
     function toggleTheme() {
