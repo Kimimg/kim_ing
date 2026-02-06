@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   
   <title>김현제의 AI 웹사이트 포트폴리오</title>
-  <!-- ✍️ EDIT: 설명 문구 변경 -->
+  <!-- ✍️ EDIT: 설명 문구 유지 -->
   <meta name="description" content="눈에 띄는 이력서로 두드리려 합니다" />
   <meta property="og:title" content="김현제의 AI 웹사이트 포트폴리오" />
   <meta property="og:description" content="눈에 띄는 이력서로 두드리려 합니다" />
@@ -134,7 +134,7 @@
     .section-title{ font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -1.5px; }
     .section-desc{ color: var(--muted); margin-bottom: 60px; font-size: 1.15rem; max-width: 750px; }
 
-    /* Theme Toggle - 세련된 배경색 적용 및 위치 고정 */
+    /* Theme Toggle - 배경색 및 가시성 고정 */
     .actions { display: flex; align-items: center; flex-shrink: 0; }
     .theme-toggle {
       background: var(--iconGradient);
@@ -187,32 +187,36 @@
       .hero{ grid-template-columns: 1fr; text-align: center; } 
       .stats-bar { padding: 15px 10px; }
       
+      /* ✍️ EDIT: 모바일 네비게이션바 레이아웃 수정 */
       .nav-inner { 
-        flex-wrap: nowrap; /* 모바일에서도 한 줄 유지 */
+        flex-wrap: wrap; 
         justify-content: space-between; 
         padding: 10px 16px;
-        gap: 8px;
+        gap: 15px;
       }
-      .brand { font-size: 1.1rem; } /* 브랜드 텍스트 소폭 축소 */
+      .brand { 
+        flex: 0 0 100%; /* 맨 위 로고가 전체 너비 차지 */
+        justify-content: center;
+        font-size: 1.2rem;
+      }
       .menu { 
+        flex: 1; /* 아래 줄 왼쪽/중앙 메뉴 */
         gap: 12px; 
-        font-size: 13px; /* 모바일 메뉴 폰트 축소로 한 줄 확보 */
+        font-size: 13px; 
         display: flex !important; 
-        overflow-x: auto; /* 만약의 경우를 대비한 가로 스크롤 허용 */
-        scrollbar-width: none;
+        justify-content: center;
       }
-      .menu::-webkit-scrollbar { display: none; }
-      .actions { margin-left: 4px; }
+      .actions { 
+        flex-shrink: 0; /* 아래 줄 오른쪽 끝 고정 */
+      }
     }
     
     @media (max-width: 500px) {
-      .menu { gap: 10px; font-size: 11px; } /* 아주 작은 화면 대응 */
-      .brand span { font-size: 0.9rem; }
-      .logo { width: 30px; height: 30px; }
+      .menu { gap: 10px; font-size: 11px; }
+      .brand span { font-size: 1rem; }
+      .logo { width: 32px; height: 32px; }
       .stats-bar { border-radius: 16px; }
       .stat-label { font-size: 0.55rem; }
-      .hero-text h1 .top-line { font-size: 2.2rem; }
-      .hero-text h1 .bottom-line { font-size: 1.4rem; }
     }
   </style>
 </head>
