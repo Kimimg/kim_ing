@@ -187,6 +187,7 @@
       .hero{ grid-template-columns: 1fr; text-align: center; } 
       .stats-bar { padding: 15px 10px; }
       
+      /* ✍️ EDIT: 모바일 네비게이션바 레이아웃 수정 및 글자 크기 확대 */
       .nav-inner { 
         flex-wrap: wrap; 
         justify-content: space-between; 
@@ -201,7 +202,7 @@
       .menu { 
         flex: 1; /* 아래 줄 왼쪽/중앙 메뉴 */
         gap: 18px; /* 간격 확대 */
-        font-size: 16px !important; /* 메뉴 글자 크기 확대 */
+        font-size: 18px !important; /* 메뉴 글자 크기 확대 */
         display: flex !important; 
         justify-content: center;
       }
@@ -216,6 +217,9 @@
       .logo { width: 32px; height: 32px; }
       .stats-bar { border-radius: 16px; }
       .stat-label { font-size: 0.55rem; }
+      
+      /* 모바일 연락처 카드 가로 너비 최적화 */
+      .contact-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -255,12 +259,12 @@
     <!-- SECTION: Hero -->
     <section class="hero" id="about">
       <div class="hero-text">
-        <span class="tag">AI & Data-Driven Financial Strategy</span>
+        <span class="tag">Finance & AI 전문가</span>
         <h1>
           <span class="top-line">Keep Going: 김현제</span>
           <span class="bottom-line">AI로 열어가는 데이터 금융의 미래</span>
         </h1>
-        <p>국립강릉원주대학교 경영학 전공. 저만의 특별한 포트폴리오를 제작하기 위해 AI와 친해지는 중입니다.</p>
+        <p>#강원대학교 경영학 전공 #저만의 특별한 포트폴리오를 제작하기 위해 AI와 친해지는 중입니다 #시대에 뒤쳐지기 싫습니다</p>
         
         <div class="stats-bar">
           <div class="stats-items-group">
@@ -299,7 +303,7 @@
 
         <div style="display: flex; gap: 16px; margin-top: 40px; justify-content: inherit; flex-wrap: wrap;">
           <a href="#projects" class="btn primary">주요 성과 보기 <i data-lucide="arrow-down"></i></a>
-          <a href="resume.pdf" download="김현제_이력서.pdf" class="btn outline"><i data-lucide="download"></i> 이력서 받기</a>
+          <a href="resume.pdf" download="김현제_이력서.pdf" class="btn outline"><i data-lucide="download"></i> 이력서 내려받기</a>
         </div>
       </div>
       
@@ -315,7 +319,7 @@
     <!-- SECTION: Why Me -->
     <section id="why-me" style="margin-top: 80px;">
       <h2 class="section-title">Why Me</h2>
-      <p class="section-desc">비즈니스 도메인 지식과 데이터/AI 기술을 결합하여 실질적인 해결책을 제시합니다.</p>
+      <p class="section-desc">21세기 혹은 그 다음 세대를 미리 준비하고자 사회·인문학 & AI역량을 두루 갖춘 인재입니다. </p>
       <div class="grid">
         <div class="card">
           <i data-lucide="target" class="icon-colored" style="width: 32px; margin-bottom: 16px;"></i>
@@ -513,11 +517,9 @@
         <div class="card">
           <h4 style="margin: 0 0 16px; color: var(--accent2);">전문 자격 (Certifications)</h4>
           <div class="badge-container">
-            <!-- ✍️ 임시 추가 섹션 (나중에 제거 가능) -->
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> KICPA 공인회계사</div>
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 세무사</div>
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 변호사</div>
-            <!-- 기존 리스트 -->
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 투자자산운용사 (2025.10)</div>
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> TOEIC (2025.07)</div>
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 매경TEST (2024.12)</div>
@@ -560,23 +562,58 @@
       </div>
     </section>
 
-    <!-- SECTION: Contact -->
-    <section id="contact" style="margin: 120px 0; text-align: center;">
+    <!-- SECTION: Contact - Horizontal Layout Updated -->
+    <section id="contact" style="margin: 80px 0 20px; text-align: center;">
       <h2 class="section-title">Get In Touch</h2>
-      <div style="display: flex; gap: 16px; margin: 0 auto 40px; justify-content: center; flex-wrap: wrap;">
+      <div style="display: flex; gap: 16px; margin: 0 auto 30px; justify-content: center; flex-wrap: wrap;">
         <a href="mailto:k.hyeonje38@gmail.com" class="btn primary">이메일 보내기 <i data-lucide="mail"></i></a>
         <a href="resume.pdf" target="_blank" class="btn outline">이력서 PDF 보기 <i data-lucide="external-link"></i></a>
       </div>
-      <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
-        <div class="contact-card"><div class="contact-info"><div class="contact-icon"><i data-lucide="mail" class="icon-mail"></i></div><div class="contact-text"><h4>Email</h4><p>k.hyeonje38@gmail.com</p></div></div><div class="copy-btn" onclick="copyText('k.hyeonje38@gmail.com')"><i data-lucide="copy"></i></div></div>
-        <div class="contact-card"><div class="contact-info"><div class="contact-icon"><i data-lucide="instagram" class="icon-insta"></i></div><div class="contact-text"><h4>Instagram</h4><p>@geemyeonje</p></div></div><a href="https://instagram.com/geemyeonje" target="_blank" class="copy-btn"><i data-lucide="external-link"></i></a></div>
-        <div class="contact-card"><div class="contact-info"><div class="contact-icon"><i data-lucide="phone" class="icon-phone"></i></div><div class="contact-text"><h4>Phone</h4><p>010-8473-5332</p></div></div><div class="copy-btn" onclick="copyText('010-8473-5332')"><i data-lucide="copy"></i></div></div>
+
+      <!-- ✍️ EDIT: 연락처 카드 가로 일렬 배치 및 여백 축소 -->
+      <div class="contact-grid" style="max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; padding: 0 24px;">
+        <!-- Email -->
+        <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
+          <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
+            <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="mail" class="icon-mail" style="width: 20px;"></i></div>
+            <div class="contact-text" style="text-align: left;">
+              <h4 style="margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Email</h4>
+              <p style="margin: 2px 0 0; font-size: 0.95rem; font-weight: 700;">k.hyeonje38@gmail.com</p>
+            </div>
+          </div>
+          <div class="copy-btn" onclick="copyText('k.hyeonje38@gmail.com')" style="cursor: pointer; color: var(--muted);"><i data-lucide="copy" style="width: 18px;"></i></div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
+          <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
+            <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="instagram" class="icon-insta" style="width: 20px;"></i></div>
+            <div class="contact-text" style="text-align: left;">
+              <h4 style="margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Instagram</h4>
+              <p style="margin: 2px 0 0; font-size: 0.95rem; font-weight: 700;">@geemyeonje</p>
+            </div>
+          </div>
+          <a href="https://instagram.com/geemyeonje" target="_blank" class="copy-btn" style="color: var(--muted);"><i data-lucide="external-link" style="width: 18px;"></i></a>
+        </div>
+
+        <!-- Phone -->
+        <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
+          <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
+            <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="phone" class="icon-phone" style="width: 20px;"></i></div>
+            <div class="contact-text" style="text-align: left;">
+              <h4 style="margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Phone</h4>
+              <p style="margin: 2px 0 0; font-size: 0.95rem; font-weight: 700;">010-8473-5332</p>
+            </div>
+          </div>
+          <div class="copy-btn" onclick="copyText('010-8473-5332')" style="cursor: pointer; color: var(--muted);"><i data-lucide="copy" style="width: 18px;"></i></div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="wrap" style="border-top: 1px solid var(--glassBorder); text-align: center; padding: 40px 24px; color: var(--muted); font-size: 14px;">
-    <p>&copy; 2026 Kim Hyeon Je. Built with Intelligence.</p>
+  <!-- ✍️ EDIT: 푸터 여백 축소 -->
+  <footer class="wrap" style="border-top: 1px solid var(--glassBorder); text-align: center; padding: 30px 24px; color: var(--muted); font-size: 14px;">
+    <p style="margin: 0;">&copy; 2026 Kim Hyeon Je. Built with Intelligence.</p>
   </footer>
 
   <div id="toast">복사되었습니다!</div>
