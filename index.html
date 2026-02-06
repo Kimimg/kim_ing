@@ -69,14 +69,15 @@
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
       max-width: var(--max); margin:0 auto; padding: 16px 24px;
+      flex-wrap: nowrap; /* 한 줄 유지 기본 */
     }
-    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; font-size: 1.4rem; cursor: pointer; }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; font-size: 1.4rem; cursor: pointer; flex-shrink: 0; }
     .logo{
       width:38px; height:38px; border-radius:12px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       box-shadow: 0 8px 20px var(--shadow);
     }
-    .menu{ display:flex; gap:32px; font-size: 24px; font-weight: 600; color: var(--muted); }
+    .menu{ display:flex; gap:32px; font-size: 24px; font-weight: 600; color: var(--muted); justify-content: center; }
     .menu a.active { color: var(--accent); }
     .menu a.active::after {
       content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px;
@@ -90,7 +91,6 @@
     .hero-text h1 .bottom-line { font-size: clamp(1.4rem, 3.5vw, 2.4rem); background: linear-gradient(to right, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.9; }
     .hero-text p { font-size: 1.25rem; color: var(--muted); margin-bottom: 32px; max-width: 580px; }
     
-    /* Stats Bar - 5 items horizontally */
     .stats-bar{ 
       display: flex; 
       gap: 15px; 
@@ -106,7 +106,7 @@
     .stats-items-group { 
       display: flex; 
       gap: 15px; 
-      flex-wrap: nowrap; /* 한 줄 유지 */
+      flex-wrap: nowrap; 
       justify-content: space-between; 
       width: 100%; 
     }
@@ -117,12 +117,11 @@
       text-align: center;
       flex: 1;
     }
-    /* 숫자와 단위를 묶어주는 컨테이너 */
     .stat-value-wrap {
       display: flex;
       align-items: baseline;
       justify-content: center;
-      white-space: nowrap; /* 텍스트가 절대 끊기지 않게 함 */
+      white-space: nowrap; 
       gap: 1px;
     }
     .stat-value { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800; color: var(--accent2); }
@@ -134,7 +133,8 @@
     .section-title{ font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -1.5px; }
     .section-desc{ color: var(--muted); margin-bottom: 60px; font-size: 1.15rem; max-width: 750px; }
 
-    /* Theme Toggle - 세련된 배경색 적용 */
+    /* Theme Toggle - 세련된 배경색 적용 및 위치 고정 */
+    .actions { display: flex; align-items: center; flex-shrink: 0; }
     .theme-toggle {
       background: var(--iconGradient);
       border: none;
@@ -181,17 +181,36 @@
     #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--accent); color: white; padding: 12px 24px; border-radius: 12px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1000; transition: 0.4s; opacity: 0; }
     #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
+    /* 📱 Responsive & Mobile Nav Fix */
     @media (max-width: 950px){ 
       .hero{ grid-template-columns: 1fr; text-align: center; } 
       .stats-bar { padding: 15px 10px; }
-      .menu { gap: 15px; font-size: 16px; flex-wrap: wrap; justify-content: center; display: flex !important; }
+      
+      .nav-inner { 
+        flex-wrap: wrap; 
+        justify-content: space-between; 
+        padding: 12px 20px;
+      }
+      .brand { order: 1; }
+      .actions { order: 2; } /* 테마 아이콘을 로고 옆 오른쪽 끝으로 고정 */
+      .menu { 
+        order: 3; 
+        width: 100%; 
+        margin-top: 12px; 
+        gap: 15px; 
+        font-size: 16px; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        display: flex !important; 
+      }
     }
     
     @media (max-width: 500px) {
-      .nav-inner { flex-direction: column; gap: 10px; }
       .menu { gap: 10px; font-size: 14px; }
       .stats-bar { border-radius: 16px; }
       .stat-label { font-size: 0.55rem; }
+      .hero-text h1 .top-line { font-size: 2.2rem; }
+      .hero-text h1 .bottom-line { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -238,7 +257,6 @@
         </h1>
         <p>국립강릉원주대학교 경영학 전공. 저만의 특별한 포트폴리오를 제작하기 위해 AI와 친해지는 중입니다.</p>
         
-        <!-- ✍️ MODIFIED: Stats Bar (5 items, No photo, One-line labels) -->
         <div class="stats-bar">
           <div class="stats-items-group">
             <div class="stat-item">
@@ -357,16 +375,12 @@
             </div>
           </div>
         </div>
-        <!-- 추가 경력 1 -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="card">
               <div class="exp-header">
-                <div>
-                  <h3 class="exp-title">추가 경력 타이틀 1</h3>
-                  <span class="exp-org">소속 기관명</span>
-                </div>
+                <div><h3 class="exp-title">추가 경력 타이틀 1</h3><span class="exp-org">소속 기관명</span></div>
                 <span class="exp-period">기간 설정</span>
               </div>
               <ul class="exp-list">
@@ -376,16 +390,12 @@
             </div>
           </div>
         </div>
-        <!-- 추가 경력 2 -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="card">
               <div class="exp-header">
-                <div>
-                  <h3 class="exp-title">추가 경력 타이틀 2</h3>
-                  <span class="exp-org">소속 기관명</span>
-                </div>
+                <div><h3 class="exp-title">추가 경력 타이틀 2</h3><span class="exp-org">소속 기관명</span></div>
                 <span class="exp-period">기간 설정</span>
               </div>
               <ul class="exp-list">
@@ -395,16 +405,12 @@
             </div>
           </div>
         </div>
-        <!-- 추가 경력 3 -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="card">
               <div class="exp-header">
-                <div>
-                  <h3 class="exp-title">추가 경력 타이틀 3</h3>
-                  <span class="exp-org">소속 기관명</span>
-                </div>
+                <div><h3 class="exp-title">추가 경력 타이틀 3</h3><span class="exp-org">소속 기관명</span></div>
                 <span class="exp-period">기간 설정</span>
               </div>
               <ul class="exp-list">
@@ -576,6 +582,7 @@
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', newTheme);
+      
       themeBtn.innerHTML = newTheme === 'dark' ? '<i data-lucide="sun-medium"></i>' : '<i data-lucide="moon-star"></i>';
       lucide.createIcons();
     }
@@ -607,7 +614,7 @@
               const inc = target / 40;
               if (current < target) {
                 current += inc;
-                counter.innerText = current.toFixed(target % 1 === 0 ? 0 : 2);
+                counter.innerText = (current).toFixed(target % 1 === 0 ? 0 : 2);
                 setTimeout(update, 20);
               } else {
                 counter.innerText = target.toLocaleString();
