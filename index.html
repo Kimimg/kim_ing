@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   
   <title>김현제의 AI 웹사이트 포트폴리오</title>
-  <!-- ✍️ EDIT: 설명 문구 유지 -->
   <meta name="description" content="눈에 띄는 이력서로 두드리려 합니다" />
   <meta property="og:title" content="김현제의 AI 웹사이트 포트폴리오" />
   <meta property="og:description" content="눈에 띄는 이력서로 두드리려 합니다" />
@@ -85,8 +84,8 @@
       background: var(--accent); border-radius: 2px;
     }
 
-    /* Sections */
-    .hero{ padding: 100px 0 80px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+    /* Hero Section */
+    .hero{ padding: 60px 0 80px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
     .hero-text h1 { margin-bottom: 24px; font-weight: 900; line-height: 1.15; display: flex; flex-direction: column; gap: 12px; }
     .hero-text h1 .top-line { font-size: clamp(2.2rem, 5.5vw, 3.8rem); background: linear-gradient(to right, var(--text) 30%, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-text h1 .bottom-line { font-size: clamp(1.4rem, 3.5vw, 2.4rem); background: linear-gradient(to right, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.9; }
@@ -128,13 +127,49 @@
     .stat-value { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 800; color: var(--accent2); }
     .stat-label { font-size: clamp(0.6rem, 1.5vw, 0.75rem); color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; white-space: nowrap; }
 
-    .card{ background: var(--card); border: 1px solid var(--glassBorder); border-radius: var(--radius); padding: 40px; box-shadow: 0 24px 48px var(--shadow); position: relative; overflow: hidden; }
-    .card:hover{ transform: translateY(-10px); border-color: var(--accent); }
+    /* ✍️ MODIFIED: Why Me Moving Ticker */
+    .why-me-ticker-wrapper {
+      width: 100%;
+      overflow: hidden;
+      margin-top: 30px;
+      position: relative;
+      /* 양 끝 부드러운 페이드 효과 */
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .why-me-ticker {
+      display: flex;
+      width: max-content;
+      animation: why-me-scroll 25s linear infinite;
+      padding: 20px 0;
+    }
+    .why-me-card-item {
+      width: 350px; /* 고정 너비로 스크롤 안정성 확보 */
+      margin: 0 16px;
+      flex-shrink: 0;
+    }
+    .why-me-card-item .card {
+      height: 240px; /* 고정 높이로 통일감 부여 */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    /* 아이콘이 항상 보이도록 투명도 조정 방지 */
+    .why-me-card-item .icon-colored {
+      opacity: 1 !important;
+      display: block !important;
+      width: 40px !important;
+      height: 40px !important;
+    }
 
-    .section-title{ font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -1.5px; }
-    .section-desc{ color: var(--muted); margin-bottom: 60px; font-size: 1.15rem; max-width: 750px; }
+    @keyframes why-me-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    /* 마우스 호버 시 멈춤 효과 */
+    .why-me-ticker-wrapper:hover .why-me-ticker { animation-play-state: paused; }
 
-    /* Theme Toggle - 배경색 및 가시성 고정 */
+    /* Theme Toggle */
     .actions { display: flex; align-items: center; flex-shrink: 0; }
     .theme-toggle {
       background: var(--iconGradient);
@@ -149,20 +184,19 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(110, 168, 255, 0.4);
     }
-    .theme-toggle i { 
-      color: white !important;
-      stroke: white !important;
-      stroke-width: 2.5px;
-    }
-    .theme-toggle:hover { 
-        transform: rotate(15deg) scale(1.1); 
-        box-shadow: 0 6px 20px rgba(110, 168, 255, 0.6);
-    }
+    .theme-toggle i { color: white !important; stroke: white !important; stroke-width: 2.5px; }
+    .theme-toggle:hover { transform: rotate(15deg) scale(1.1); box-shadow: 0 6px 20px rgba(110, 168, 255, 0.6); }
 
     .icon-colored { stroke: url(#icon-gradient); filter: drop-shadow(0 0 5px rgba(110, 168, 255, 0.3)); }
     .icon-insta { stroke: #E4405F; }
     .icon-phone { stroke: #25D366; }
     .icon-mail { stroke: #4285F4; } 
+
+    .card{ background: var(--card); border: 1px solid var(--glassBorder); border-radius: var(--radius); padding: 30px; box-shadow: 0 20px 40px var(--shadow); position: relative; overflow: hidden; }
+    .card:hover{ transform: translateY(-10px); border-color: var(--accent); }
+
+    .section-title{ font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -1.5px; }
+    .section-desc{ color: var(--muted); margin-bottom: 60px; font-size: 1.15rem; max-width: 750px; }
 
     .btn{ display:inline-flex; align-items:center; justify-content:center; gap:12px; padding: 16px 32px; border-radius: 18px; font-weight: 700; cursor:pointer; border: 1px solid var(--glassBorder); font-size: 16px; }
     .btn.primary{ background: linear-gradient(135deg, var(--accent), #4a90ff); color: white; border: none; box-shadow: 0 12px 24px rgba(110,168,255,0.3); }
@@ -184,42 +218,21 @@
 
     /* 📱 Responsive & Mobile Nav Fix */
     @media (max-width: 950px){ 
-      .hero{ grid-template-columns: 1fr; text-align: center; } 
+      .hero{ grid-template-columns: 1fr; text-align: center; padding: 40px 0; } 
       .stats-bar { padding: 15px 10px; }
-      
-      /* ✍️ EDIT: 모바일 네비게이션바 레이아웃 수정 및 글자 크기 확대 */
-      .nav-inner { 
-        flex-wrap: wrap; 
-        justify-content: space-between; 
-        padding: 10px 16px;
-        gap: 15px;
-      }
-      .brand { 
-        flex: 0 0 100%; /* 맨 위 로고가 전체 너비 차지 */
-        justify-content: center;
-        font-size: 1.2rem;
-      }
-      .menu { 
-        flex: 1; /* 아래 줄 왼쪽/중앙 메뉴 */
-        gap: 18px; /* 간격 확대 */
-        font-size: 18px !important; /* 메뉴 글자 크기 확대 */
-        display: flex !important; 
-        justify-content: center;
-      }
-      .actions { 
-        flex-shrink: 0; /* 아래 줄 오른쪽 끝 고정 */
-      }
+      .nav-inner { flex-wrap: wrap; justify-content: space-between; padding: 10px 16px; gap: 15px; }
+      .brand { flex: 0 0 100%; justify-content: center; font-size: 1.2rem; }
+      .menu { flex: 1; gap: 18px; font-size: 16px !important; display: flex !important; justify-content: center; }
+      .actions { flex-shrink: 0; }
+      .why-me-card-item { width: 280px; }
     }
     
     @media (max-width: 500px) {
-      .menu { gap: 14px; font-size: 14px !important; } /* 더 작은 화면에서도 가독성 확보 */
+      .menu { gap: 14px; font-size: 14px !important; }
       .brand span { font-size: 1rem; }
       .logo { width: 32px; height: 32px; }
       .stats-bar { border-radius: 16px; }
       .stat-label { font-size: 0.55rem; }
-      
-      /* 모바일 연락처 카드 가로 너비 최적화 */
-      .contact-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -248,11 +261,13 @@
       </div>
       <div class="actions">
         <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="테마 전환">
-          <i data-lucide="moon-star"></i> <!-- 기본 라이트 모드이므로 다크로 바꾸는 달 아이콘 표시 -->
+          <i data-lucide="moon-star"></i>
         </button>
       </div>
     </div>
   </nav>
+
+  <!-- ✍️ MODIFIED: ticker-wrapper removed from here -->
 
   <main class="wrap">
     
@@ -262,40 +277,30 @@
         <span class="tag">Finance & AI 전문가</span>
         <h1>
           <span class="top-line">Keep Going: 김현제</span>
-          <span class="bottom-line">AI로 열어가는 데이터 금융의 미래</span>
+          <span class="bottom-line">AI로 금융 데이터를 해석하는 인재</span>
         </h1>
         <p>#강원대학교 경영학 전공 #저만의 특별한 포트폴리오를 제작하기 위해 AI와 친해지는 중입니다 #시대에 뒤쳐지기 싫습니다</p>
         
         <div class="stats-bar">
           <div class="stats-items-group">
             <div class="stat-item">
-              <div class="stat-value-wrap">
-                <span class="stat-value counter" data-target="26">0</span><span class="stat-value">세</span>
-              </div>
+              <div class="stat-value-wrap"><span class="stat-value counter" data-target="26">0</span><span class="stat-value">세</span></div>
               <span class="stat-label">현재 나이</span>
             </div>
             <div class="stat-item">
-              <div class="stat-value-wrap">
-                <span class="stat-value counter" data-target="3.88">0</span><span class="stat-value">/4.5</span>
-              </div>
+              <div class="stat-value-wrap"><span class="stat-value counter" data-target="3.88">0</span><span class="stat-value">/4.5</span></div>
               <span class="stat-label">전체 평점</span>
             </div>
             <div class="stat-item">
-              <div class="stat-value-wrap">
-                <span class="stat-value counter" data-target="25">0</span><span class="stat-value">+</span>
-              </div>
-              <span class="stat-label">프로젝트</span>
+              <div class="stat-value-wrap"><span class="stat-value counter" data-target="25">0</span><span class="stat-value">+</span></div>
+              <span class="stat-label">협업 프로젝트</span>
             </div>
             <div class="stat-item">
-              <div class="stat-value-wrap">
-                <span class="stat-value counter" data-target="5">0</span><span class="stat-value">개</span>
-              </div>
-              <span class="stat-label">총 자격증</span>
+              <div class="stat-value-wrap"><span class="stat-value counter" data-target="5">0</span><span class="stat-value">개</span></div>
+              <span class="stat-label">직무 관련 자격증</span>
             </div>
             <div class="stat-item">
-              <div class="stat-value-wrap">
-                <span class="stat-value counter" data-target="810">0</span><span class="stat-value">점</span>
-              </div>
+              <div class="stat-value-wrap"><span class="stat-value counter" data-target="810">0</span><span class="stat-value">점</span></div>
               <span class="stat-label">TOEIC</span>
             </div>
           </div>
@@ -316,27 +321,62 @@
       </div>
     </section>
 
-    <!-- SECTION: Why Me -->
-    <section id="why-me" style="margin-top: 80px;">
+    <!-- ✍️ MODIFIED: Why Me Section with Animation and Preserved Icons -->
+    <section id="why-me" style="margin-top: 120px;">
       <h2 class="section-title">Why Me</h2>
-      <p class="section-desc">21세기 혹은 그 다음 세대를 미리 준비하고자 사회·인문학 & AI역량을 두루 갖춘 인재입니다. </p>
-      <div class="grid">
-        <div class="card">
-          <i data-lucide="target" class="icon-colored" style="width: 32px; margin-bottom: 16px;"></i>
-          <h4 style="margin:0 0 12px;">핵심 문제 정의</h4>
-          <p style="font-size: 14px; color: var(--muted); margin:0;">경영학적 사고를 바탕으로 데이터 속에서 비즈니스의 페인 포인트를 정확히 포착합니다.</p>
-        </div>
-        <div class="card">
-          <i data-lucide="zap" class="icon-colored" style="width: 32px; margin-bottom: 16px;"></i>
-          <h4 style="margin:0 0 12px;">프로세스 자동화</h4>
-          <p style="font-size: 14px; color: var(--muted); margin:0;">반복적인 수작업을 AI와 기술로 자동화하여 조직의 생산성을 극대화합니다.</p>
-        </div>
-        <div class="card">
-          <i data-lucide="message-circle" class="icon-colored" style="width: 32px; margin-bottom: 16px;"></i>
-          <h4 style="margin:0 0 12px;">명확한 커뮤니케이션</h4>
-          <p style="font-size: 14px; color: var(--muted); margin:0;">복잡한 데이터 분석 결과를 비전공자도 이해하기 쉬운 논리적인 문서와 시각화로 전달합니다.</p>
+      <p class="section-desc">21세기 혹은 그 다음 세대를 미리 준비하고자 사회·인문학 & AI역량을 두루 갖춘 인재입니다.</p>
+      
+      <div class="why-me-ticker-wrapper">
+        <div class="why-me-ticker">
+          <!-- Card 1 -->
+          <div class="why-me-card-item">
+            <div class="card">
+              <i data-lucide="target" class="icon-colored"></i>
+              <h4 style="margin:12px 0 12px;">핵심 문제 정의</h4>
+              <p style="font-size: 14px; color: var(--muted); margin:0;">경영학적 사고를 바탕으로 데이터 속에서 비즈니스의 페인 포인트를 정확히 포착합니다.</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="why-me-card-item">
+            <div class="card">
+              <i data-lucide="zap" class="icon-colored"></i>
+              <h4 style="margin:12px 0 12px;">데이터 기반 해결</h4>
+              <p style="font-size: 14px; color: var(--muted); margin:0;">5만 건 이상의 부동산 데이터를 다루며 엑셀 자동화와 검증 로직을 직접 구축한 경험이 있습니다.</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="why-me-card-item">
+            <div class="card">
+              <i data-lucide="message-circle" class="icon-colored"></i>
+              <h4 style="margin:12px 0 12px;">명확한 커뮤니케이션</h4>
+              <p style="font-size: 14px; color: var(--muted); margin:0;">복잡한 데이터 분석 결과를 비전공자도 이해하기 쉬운 논리적인 문서와 시각화로 전달합니다.</p>
+            </div>
+          </div>
+          <!-- Duplicate cards for seamless looping -->
+          <div class="why-me-card-item">
+            <div class="card">
+              <i data-lucide="target" class="icon-colored"></i>
+              <h4 style="margin:12px 0 12px;">핵심 문제 정의</h4>
+              <p style="font-size: 14px; color: var(--muted); margin:0;">경영학적 사고를 바탕으로 데이터 속에서 비즈니스의 페인 포인트를 정확히 포착합니다.</p>
+            </div>
+          </div>
+          <div class="why-me-card-item">
+            <div class="card">
+              <i data-lucide="zap" class="icon-colored"></i>
+              <h4 style="margin:12px 0 12px;">데이터 기반 해결</h4>
+              <p style="font-size: 14px; color: var(--muted); margin:0;">5만 건 이상의 부동산 데이터를 다루며 엑셀 자동화와 검증 로직을 직접 구축한 경험이 있습니다.</p>
+            </div>
+          </div>
+          <div class="why-me-card-item">
+            <div class="card">
+              <i data-lucide="message-circle" class="icon-colored"></i>
+              <h4 style="margin:12px 0 12px;">명확한 커뮤니케이션</h4>
+              <p style="font-size: 14px; color: var(--muted); margin:0;">복잡한 데이터 분석 결과를 비전공자도 이해하기 쉬운 논리적인 문서와 시각화로 전달합니다.</p>
+            </div>
+          </div>
         </div>
       </div>
+
       <div style="display: flex; gap: 16px; margin-top: 40px; justify-content: center; flex-wrap: wrap;">
         <a href="#contact" class="btn primary">바로 연락하기 <i data-lucide="send"></i></a>
         <a href="resume.pdf" target="_blank" class="btn outline">1페이지 이력 요약 보기 <i data-lucide="file-text"></i></a>
@@ -344,7 +384,7 @@
       </div>
     </section>
 
-    <!-- SECTION: Experience -->
+    <!-- Experience Section -->
     <section id="experience" style="margin-top: 100px;">
       <h2 class="section-title">Career Experience</h2>
       <div class="timeline">
@@ -384,55 +424,10 @@
             </div>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card">
-              <div class="exp-header">
-                <div><h3 class="exp-title">추가 경력 타이틀 1</h3><span class="exp-org">소속 기관명</span></div>
-                <span class="exp-period">기간 설정</span>
-              </div>
-              <ul class="exp-list">
-                <li>수행 업무 및 성과 내용을 입력하세요.</li>
-                <li>데이터 기반 문제 해결 사례를 기술하세요.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card">
-              <div class="exp-header">
-                <div><h3 class="exp-title">추가 경력 타이틀 2</h3><span class="exp-org">소속 기관명</span></div>
-                <span class="exp-period">기간 설정</span>
-              </div>
-              <ul class="exp-list">
-                <li>수행 업무 및 성과 내용을 입력하세요.</li>
-                <li>AI 활용 사례를 구체적으로 기술하세요.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card">
-              <div class="exp-header">
-                <div><h3 class="exp-title">추가 경력 타이틀 3</h3><span class="exp-org">소속 기관명</span></div>
-                <span class="exp-period">기간 설정</span>
-              </div>
-              <ul class="exp-list">
-                <li>수행 업무 및 성과 내용을 입력하세요.</li>
-                <li>조직 내 기여도를 수치화하여 기술하세요.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- SECTION: Projects -->
+    <!-- Other sections (Projects, Case Studies, Skills, etc.) -->
     <section id="projects" style="margin-top: 100px;">
       <h2 class="section-title">Featured Projects</h2>
       <div class="grid">
@@ -446,133 +441,16 @@
           <h3 style="margin: 0 0 20px;">부동산 시세 정밀 분석</h3>
           <p style="color:var(--muted); font-size:14px;">엑셀 VBA 및 통계 로직을 활용해 5만 건 이상의 데이터 속 이상치를 자동 탐지하는 시스템을 구축했습니다.</p>
         </div>
-        <div class="card">
-          <div class="tag">AI Strategy</div>
-          <h3 style="margin: 0 0 20px;">새로운 성과 프로젝트 1</h3>
-          <p style="color:var(--muted); font-size:14px;">프로젝트의 핵심 내용과 달성한 성과를 한 문장으로 요약하여 입력하세요.</p>
-        </div>
-        <div class="card">
-          <div class="tag">Data Insights</div>
-          <h3 style="margin: 0 0 20px;">새로운 성과 프로젝트 2</h3>
-          <p style="color:var(--muted); font-size:14px;">사용한 기술 스택과 비즈니스 임팩트를 중심으로 기술하세요.</p>
-        </div>
       </div>
     </section>
 
-    <!-- SECTION: Case Studies -->
-    <section id="case-studies" style="margin-top: 120px;">
-      <h2 class="section-title">Case Studies</h2>
-      <p class="section-desc">문제 해결 과정과 성과를 상세히 분석한 실무 케이스입니다.</p>
-      <div style="display: flex; flex-direction: column; gap: 40px;">
-        <div class="card">
-          <div class="badge-container" style="margin-bottom: 24px;">
-            <div class="badge"><i data-lucide="clock"></i> 제작시간 40%↓</div>
-            <div class="badge"><i data-lucide="check-circle"></i> 산출물 표준화</div>
-          </div>
-          <h3 style="margin: 0 0 24px;">AI 기반 교육 콘텐츠 제작 효율화</h3>
-          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Problem</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">전통적인 교육 영상 제작 방식의 높은 비용과 긴 리드타임으로 인한 적시 교육의 어려움.</p></div>
-            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Approach</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">LLM을 통한 시나리오 초안 작성과 가상 인간 AI 영상 툴을 결합한 하이브리드 제작 파이프라인 설계.</p></div>
-            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Result</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">기존 1개월 소요 공정을 1주일 이내로 단축. 고퀄리티 교육 영상의 지속적인 발행 가능 환경 구축.</p></div>
-          </div>
-          <div style="margin-top: 32px; display: flex; gap: 12px; border-top: 1px solid var(--glassBorder); padding-top: 24px;">
-            <button class="btn primary small" onclick="alert('샘플 이미지를 준비 중입니다.')">산출물 스크린샷 <i data-lucide="image"></i></button>
-            <button class="btn outline small" onclick="alert('작업 과정 문서를 준비 중입니다.')">작업 과정 문서 <i data-lucide="file-text"></i></button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="badge-container" style="margin-bottom: 24px;">
-            <div class="badge"><i data-lucide="layers"></i> 50,000+ rows</div>
-            <div class="badge"><i data-lucide="activity"></i> 자동탐지 로직</div>
-          </div>
-          <h3 style="margin: 0 0 24px;">부동산 데이터 이상치 탐지 자동화</h3>
-          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div><h5 style="color:var(--accent); margin-bottom:10px;">Problem</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">수만 건의 실거래 데이터 중 전수 조사가 불가능한 이상 거래 및 데이터 오류 식별의 한계.</p></div>
-            <div><h5 style="color:var(--accent); margin-bottom:10px;">Approach</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">VBA와 통계적 기법을 적용하여 지역별 표준 편차를 벗어나는 데이터를 즉각 하이라이트하는 검증 도구 개발.</p></div>
-            <div><h5 style="color:var(--accent); margin-bottom:10px;">Result</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">오류 검토 누락률 0% 달성. 데이터 클렌징 작업 시간을 수작업 대비 90% 이상 절감하는 성과 도출.</p></div>
-          </div>
-          <div style="margin-top: 32px; display: flex; gap: 12px; border-top: 1px solid var(--glassBorder); padding-top: 24px;">
-            <button class="btn primary small" onclick="alert('리포트 샘플을 준비 중입니다.')">리포트 예시 <i data-lucide="bar-chart"></i></button>
-            <button class="btn outline small" onclick="alert('로직 설명 자료를 준비 중입니다.')">로직 설명 <i data-lucide="code"></i></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: Skills -->
-    <section id="skills" style="margin-top: 100px;">
-      <h2 class="section-title">Technical Expertise</h2>
-      <div class="grid">
-        <div class="card">
-          <h4 style="margin: 0 0 16px; color: var(--accent);">기술 역량 (Skill Set)</h4>
-          <div class="badge-container">
-            <div class="badge"><i data-lucide="file-spreadsheet" class="icon-colored"></i> Excel Expert (VBA)</div>
-            <div class="badge"><i data-lucide="brain" class="icon-colored"></i> Prompt Engineering</div>
-            <div class="badge"><i data-lucide="pie-chart" class="icon-colored"></i> Market Analysis</div>
-            <div class="badge"><i data-lucide="users" class="icon-colored"></i> Leadership</div>
-            <div class="badge"><i data-lucide="message-square" class="icon-colored"></i> Communication</div>
-            <div class="badge"><i data-lucide="handshake" class="icon-colored"></i> Collaboration</div>
-          </div>
-        </div>
-        <div class="card">
-          <h4 style="margin: 0 0 16px; color: var(--accent2);">전문 자격 (Certifications)</h4>
-          <div class="badge-container">
-            <div class="badge"><i data-lucide="award" class="icon-colored"></i> KICPA 공인회계사</div>
-            <div class="badge"><i data-lucide="award" class="icon-colored"></i> 세무사</div>
-            <div class="badge"><i data-lucide="award" class="icon-colored"></i> 변호사</div>
-            <div class="badge"><i data-lucide="award" class="icon-colored"></i> 투자자산운용사 (2025.10)</div>
-            <div class="badge"><i data-lucide="award" class="icon-colored"></i> TOEIC (2025.07)</div>
-            <div class="badge"><i data-lucide="award" class="icon-colored"></i> 매경TEST (2024.12)</div>
-            <div class="badge"><i data-lucide="award" class="icon-colored"></i> 데이터분석준전문가 ADsP (2024.09)</div>
-            <div class="badge"><i data-lucide="car" class="icon-colored"></i> 2종 보통 운전면허</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: Skill Evidence -->
-    <section id="skill-evidence" style="margin-top: 60px;">
-      <h2 class="section-title">Skill Evidence</h2>
-      <p class="section-desc">실제 업무 및 프로젝트를 통해 증명된 역량의 근거입니다.</p>
-      <div class="grid">
-        <div class="card">
-          <h4 style="margin:0 0 12px; color: var(--accent);"><i data-lucide="check-square" style="width:20px; vertical-align:middle; margin-right:8px;"></i> Excel / VBA</h4>
-          <ul style="font-size: 14px; color: var(--muted); padding-left: 20px; line-height: 1.8;">
-            <li>대량의 부동산 데이터(5만건+) 정제 및 검증 자동화 도구 개발</li>
-            <li>조직 내 반복적 행정 문서를 엑셀 템플릿화하여 업무 효율 2배 향상</li>
-            <li>복잡한 시장 지표 시각화 대시보드 구축 경험</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4 style="margin:0 0 12px; color: var(--accent2);"><i data-lucide="sparkles" style="width:20px; vertical-align:middle; margin-right:8px;"></i> AI 활용 능력</h4>
-          <ul style="font-size: 14px; color: var(--muted); padding-left: 20px; line-height: 1.8;">
-            <li>직무 맞춤형 프롬프트 엔니니어링을 통한 시나리오 기획 자동화</li>
-            <li>AI 영상 생성 워크플로우 도입으로 제작 리드타임 75% 단축</li>
-            <li>AI 답변 품질 검증을 위한 자체 QA 체크리스트 운용</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4 style="margin:0 0 12px; color: var(--text);"><i data-lucide="users" style="width:20px; vertical-align:middle; margin-right:8px;"></i> Communication</h4>
-          <ul style="font-size: 14px; color: var(--muted); padding-left: 20px; line-height: 1.8;">
-            <li>데이터 분석 결과의 임팩트를 숫자 중심으로 요약 보고하는 문서화 능력</li>
-            <li>인턴 근무 중 실무진과의 협업을 통한 프로세스 개선 제안 및 채택</li>
-            <li>부동산 도메인 개념을 비전공자에게 논리적으로 설명하는 전달력</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: Contact - Horizontal Layout Updated -->
     <section id="contact" style="margin: 80px 0 20px; text-align: center;">
       <h2 class="section-title">Get In Touch</h2>
       <div style="display: flex; gap: 16px; margin: 0 auto 30px; justify-content: center; flex-wrap: wrap;">
         <a href="mailto:k.hyeonje38@gmail.com" class="btn primary">이메일 보내기 <i data-lucide="mail"></i></a>
         <a href="resume.pdf" target="_blank" class="btn outline">이력서 PDF 보기 <i data-lucide="external-link"></i></a>
       </div>
-
-      <!-- ✍️ EDIT: 연락처 카드 가로 일렬 배치 및 여백 축소 -->
       <div class="contact-grid" style="max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; padding: 0 24px;">
-        <!-- Email -->
         <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
           <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
             <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="mail" class="icon-mail" style="width: 20px;"></i></div>
@@ -583,8 +461,6 @@
           </div>
           <div class="copy-btn" onclick="copyText('k.hyeonje38@gmail.com')" style="cursor: pointer; color: var(--muted);"><i data-lucide="copy" style="width: 18px;"></i></div>
         </div>
-
-        <!-- Instagram -->
         <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
           <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
             <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="instagram" class="icon-insta" style="width: 20px;"></i></div>
@@ -595,23 +471,10 @@
           </div>
           <a href="https://instagram.com/geemyeonje" target="_blank" class="copy-btn" style="color: var(--muted);"><i data-lucide="external-link" style="width: 18px;"></i></a>
         </div>
-
-        <!-- Phone -->
-        <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
-          <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
-            <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="phone" class="icon-phone" style="width: 20px;"></i></div>
-            <div class="contact-text" style="text-align: left;">
-              <h4 style="margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Phone</h4>
-              <p style="margin: 2px 0 0; font-size: 0.95rem; font-weight: 700;">010-8473-5332</p>
-            </div>
-          </div>
-          <div class="copy-btn" onclick="copyText('010-8473-5332')" style="cursor: pointer; color: var(--muted);"><i data-lucide="copy" style="width: 18px;"></i></div>
-        </div>
       </div>
     </section>
   </main>
 
-  <!-- ✍️ EDIT: 푸터 여백 축소 -->
   <footer class="wrap" style="border-top: 1px solid var(--glassBorder); text-align: center; padding: 30px 24px; color: var(--muted); font-size: 14px;">
     <p style="margin: 0;">&copy; 2026 Kim Hyeon Je. Built with Intelligence.</p>
   </footer>
