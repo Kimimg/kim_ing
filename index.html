@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" data-theme="dark">
+<html lang="ko" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -187,7 +187,7 @@
       .hero{ grid-template-columns: 1fr; text-align: center; } 
       .stats-bar { padding: 15px 10px; }
       
-      /* ✍️ EDIT: 모바일 네비게이션바 레이아웃 수정 */
+      /* ✍️ EDIT: 모바일 네비게이션바 레이아웃 수정 및 글자 크기 확대 */
       .nav-inner { 
         flex-wrap: wrap; 
         justify-content: space-between; 
@@ -201,8 +201,8 @@
       }
       .menu { 
         flex: 1; /* 아래 줄 왼쪽/중앙 메뉴 */
-        gap: 12px; 
-        font-size: 13px; 
+        gap: 18px; /* 간격 확대 */
+        font-size: 16px !important; /* 메뉴 글자 크기 확대 */
         display: flex !important; 
         justify-content: center;
       }
@@ -212,7 +212,7 @@
     }
     
     @media (max-width: 500px) {
-      .menu { gap: 10px; font-size: 11px; }
+      .menu { gap: 14px; font-size: 14px !important; } /* 더 작은 화면에서도 가독성 확보 */
       .brand span { font-size: 1rem; }
       .logo { width: 32px; height: 32px; }
       .stats-bar { border-radius: 16px; }
@@ -245,7 +245,7 @@
       </div>
       <div class="actions">
         <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="테마 전환">
-          <i data-lucide="sun-medium"></i>
+          <i data-lucide="moon-star"></i> <!-- 기본 라이트 모드이므로 다크로 바꾸는 달 아이콘 표시 -->
         </button>
       </div>
     </div>
