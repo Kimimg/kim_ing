@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   
   <title>김현제의 AI 웹사이트 포트폴리오</title>
-  <meta name="description" content="눈에 띄는 이력서로 두드리려 합니다" />
+  <meta name="description" content="금융 도메인 지식과 AI 기술을 결합하여 데이터의 신뢰성과 업무 효율을 극대화하는 분석가 김현제입니다." />
   <meta property="og:title" content="김현제의 AI 웹사이트 포트폴리오" />
-  <meta property="og:description" content="눈에 띄는 이력서로 두드리려 합니다" />
+  <meta property="og:description" content="데이터 정합성과 리스크 통제를 중시하는 AI 기반 금융 전문가" />
   <meta property="og:type" content="website" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
 
@@ -78,9 +78,10 @@
       box-shadow: 0 8px 20px var(--shadow);
     }
     .menu{ display:flex; gap:32px; font-size: 24px; font-weight: 600; color: var(--muted); justify-content: center; }
+    .menu a { position: relative; padding: 4px 0; transition: color 0.3s; }
     .menu a.active { color: var(--accent); }
     .menu a.active::after {
-      content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px;
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 3px;
       background: var(--accent); border-radius: 2px;
     }
 
@@ -89,7 +90,7 @@
     .hero-text h1 { margin-bottom: 24px; font-weight: 900; line-height: 1.15; display: flex; flex-direction: column; gap: 12px; }
     .hero-text h1 .top-line { font-size: clamp(2.2rem, 5.5vw, 3.8rem); background: linear-gradient(to right, var(--text) 30%, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero-text h1 .bottom-line { font-size: clamp(1.4rem, 3.5vw, 2.4rem); background: linear-gradient(to right, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.9; }
-    .hero-text p { font-size: 1.25rem; color: var(--muted); margin-bottom: 32px; max-width: 580px; }
+    .hero-text p { font-size: 1.2rem; color: var(--muted); margin-bottom: 32px; max-width: 580px; line-height: 1.7; }
     
     .stats-bar{ 
       display: flex; gap: 15px; margin-top: 50px; padding: 20px; 
@@ -110,10 +111,17 @@
     }
     .why-me-ticker { display: flex; width: max-content; animation: why-me-scroll 25s linear infinite; padding: 20px 0; }
     .why-me-card-item { width: 350px; margin: 0 16px; flex-shrink: 0; }
-    .why-me-card-item .card { height: 240px; display: flex; flex-direction: column; justify-content: center; }
+    .why-me-card-item .card { height: 260px; display: flex; flex-direction: column; justify-content: center; }
     .why-me-card-item .icon-colored { opacity: 1 !important; width: 32px !important; height: 32px !important; margin-bottom: 12px; stroke: url(#icon-gradient); filter: drop-shadow(0 0 5px rgba(110, 168, 255, 0.3)); }
     
     @keyframes why-me-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .why-me-ticker, .counter {
+        animation: none !important;
+        transform: none !important;
+      }
+    }
     .why-me-ticker-wrapper:hover .why-me-ticker { animation-play-state: paused; }
 
     /* Theme Toggle */
@@ -137,8 +145,9 @@
     .section-title{ font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -1.5px; }
     .section-desc{ color: var(--muted); margin-bottom: 60px; font-size: 1.15rem; max-width: 750px; }
 
-    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:12px; padding: 16px 32px; border-radius: 18px; font-weight: 700; cursor:pointer; border: 1px solid var(--glassBorder); font-size: 16px; }
-    .btn.primary{ background: linear-gradient(135deg, var(--accent), #4a90ff); color: white; border: none; box-shadow: 0 12px 24px rgba(110,168,255,0.3); }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:12px; padding: 16px 32px; border-radius: 18px; font-weight: 700; cursor:pointer; border: 1px solid var(--glassBorder); font-size: 16px; transition: 0.3s; }
+    .btn:active { transform: scale(0.95); }
+    .btn.primary{ background: linear-gradient(135deg, var(--accent), #4a90ff); color: white; border: none; box-shadow: 0 12px 24px rgba(110, 168, 255, 0.3); }
     .btn.outline{ background: var(--glass); color: var(--text); }
     .btn.small { padding: 10px 20px; font-size: 14px; border-radius: 12px; }
 
@@ -152,7 +161,7 @@
     .badge { background: var(--glass); border: 1px solid var(--glassBorder); padding: 10px 18px; border-radius: 14px; font-size: 0.95rem; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 10px; }
     .badge i { width: 16px; }
     
-    #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--accent); color: white; padding: 12px 24px; border-radius: 12px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1000; transition: 0.4s; opacity: 0; }
+    #toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--accent); color: white; padding: 12px 24px; border-radius: 12px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 1000; transition: 0.4s; opacity: 0; pointer-events: none; }
     #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
     @media (max-width: 950px){ 
@@ -186,7 +195,7 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand" onclick="window.scrollTo(0,0)">
+      <div class="brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         <div class="logo"></div>
         <span>김현제(Kim ing)</span>
       </div>
@@ -199,7 +208,7 @@
       </div>
       <div class="actions">
         <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="테마 전환">
-          <i data-lucide="moon-star"></i>
+          <i data-lucide="sun-medium"></i>
         </button>
       </div>
     </div>
@@ -210,13 +219,12 @@
     <!-- SECTION: Hero -->
     <section class="hero" id="about">
       <div class="hero-text">
-        <span class="tag">Finance & AI 전문가</span>
+        <span class="tag">Finance & AI Data Strategist</span>
         <h1>
           <span class="top-line">Keep Going: 김현제</span>
-          <span class="bottom-line">AI로 금융 데이터를 해석하는 인재</span>
+          <span class="bottom-line">데이터로 금융의 미래를 설계하다</span>
         </h1>
-        <!-- ✍️ RESTORED: Original Intro Text -->
-        <p>국립강릉원주대학교 경영학 전공. 저만의 특별한 포트폴리오를 제작하기 위해 AI와 친해지는 중입니다.</p>
+        <p>경영학적 통찰과 AI 기술을 융합하여 데이터 정합성을 확보하고, 정밀한 분석을 통해 리스크 통제 및 행정 효율화 프로세스를 구축하는 데이터 전략가입니다.</p>
         
         <div class="stats-bar">
           <div class="stats-items-group">
@@ -234,7 +242,7 @@
             </div>
             <div class="stat-item">
               <div class="stat-value-wrap"><span class="stat-value counter" data-target="5">0</span><span class="stat-value">개</span></div>
-              <span class="stat-label">직무 관련 자격증</span>
+              <span class="stat-label">전문 자격증</span>
             </div>
             <div class="stat-item">
               <div class="stat-value-wrap"><span class="stat-value counter" data-target="810">0</span><span class="stat-value">점</span></div>
@@ -244,57 +252,56 @@
         </div>
 
         <div style="display: flex; gap: 16px; margin-top: 40px; justify-content: inherit; flex-wrap: wrap;">
-          <a href="#projects" class="btn primary">주요 성과 보기 <i data-lucide="arrow-down"></i></a>
-          <a href="resume.pdf" download="김현제_이력서.pdf" class="btn outline"><i data-lucide="download"></i> 이력서 내려받기</a>
+          <a href="#projects" class="btn primary">핵심 성과 포트폴리오 <i data-lucide="arrow-down"></i></a>
+          <a href="resume.pdf" download="김현제_이력서.pdf" class="btn outline"><i data-lucide="download"></i> 이력서 PDF</a>
         </div>
       </div>
       
       <div class="card" style="height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-style: dashed; background: rgba(110,168,255,0.03);">
         <i data-lucide="brain-circuit" class="icon-colored" style="width: 120px; height: 120px; margin-bottom: 24px; opacity: 0.8;"></i>
         <div style="text-align: center;">
-          <div style="font-weight: 800; font-size: 1.6rem; color: var(--text);">Communication & Data Insight</div>
-          <div style="font-size: 1.1rem; color: var(--muted); margin-top: 10px;">경영학의 의사소통 역량과 기술의 융합</div>
+          <div style="font-weight: 800; font-size: 1.6rem; color: var(--text);">Integrity & Risk Insight</div>
+          <div style="font-size: 1.1rem; color: var(--muted); margin-top: 10px;">금융 도메인 기반의 데이터 검증 역량</div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: Why Me (With Moving Cards) -->
+    <!-- SECTION: Why Me -->
     <section id="why-me" style="margin-top: 120px;">
       <h2 class="section-title">Why Me</h2>
-      <p class="section-desc">21세기 혹은 그 다음 세대를 미리 준비하고자 사회·인문학 & AI역량을 두루 갖춘 인재입니다.</p>
+      <p class="section-desc">급변하는 금융 환경에서 AI 기술을 리스크 없는 실무 해결책으로 치환할 준비가 된 인재입니다.</p>
       
       <div class="why-me-ticker-wrapper">
         <div class="why-me-ticker">
           <div class="why-me-card-item">
-            <div class="card"><i data-lucide="target" class="icon-colored"></i><h4 style="margin:12px 0 12px;">핵심 문제 정의</h4><p style="font-size: 14px; color: var(--muted); margin:0;">경영학적 사고를 바탕으로 데이터 속에서 비즈니스의 페인 포인트를 정확히 포착합니다.</p></div>
+            <div class="card"><i data-lucide="shield-check" class="icon-colored"></i><h4 style="margin:12px 0 12px;">데이터 정합성 보장</h4><p style="font-size: 14px; color: var(--muted); margin:0;">모든 분석 결과는 교차 검증을 거치며, 데이터 클렌징 단계부터 엄격한 리스크 관리를 적용합니다.</p></div>
           </div>
           <div class="why-me-card-item">
-            <div class="card"><i data-lucide="zap" class="icon-colored"></i><h4 style="margin:12px 0 12px;">데이터 기반 해결</h4><p style="font-size: 14px; color: var(--muted); margin:0;">5만 건 이상의 부동산 데이터를 다루며 엑셀 자동화와 검증 로직을 직접 구축한 경험이 있습니다.</p></div>
+            <div class="card"><i data-lucide="file-check" class="icon-colored"></i><h4 style="margin:12px 0 12px;">프로세스 재현성 확보</h4><p style="font-size: 14px; color: var(--muted); margin:0;">VBA 및 AI 자동화를 통해 인적 오류를 최소화하고, 누가 수행해도 동일한 결과를 얻는 SOP를 구축합니다.</p></div>
           </div>
           <div class="why-me-card-item">
-            <div class="card"><i data-lucide="message-circle" class="icon-colored"></i><h4 style="margin:12px 0 12px;">명확한 커뮤니케이션</h4><p style="font-size: 14px; color: var(--muted); margin:0;">복잡한 데이터 분석 결과를 비전공자도 이해하기 쉬운 논리적인 문서와 시각화로 전달합니다.</p></div>
-          </div>
-          <!-- Duplicates for loop -->
-          <div class="why-me-card-item">
-            <div class="card"><i data-lucide="target" class="icon-colored"></i><h4 style="margin:12px 0 12px;">핵심 문제 정의</h4><p style="font-size: 14px; color: var(--muted); margin:0;">경영학적 사고를 바탕으로 데이터 속에서 비즈니스의 페인 포인트를 정확히 포착합니다.</p></div>
+            <div class="card"><i data-lucide="bar-chart-3" class="icon-colored"></i><h4 style="margin:12px 0 12px;">정량적 성과 보고</h4><p style="font-size: 14px; color: var(--muted); margin:0;">복잡한 데이터 분석 결과를 금융 의사결정에 즉시 활용 가능한 핵심 지표(KPI)로 시각화 및 문서화합니다.</p></div>
           </div>
           <div class="why-me-card-item">
-            <div class="card"><i data-lucide="zap" class="icon-colored"></i><h4 style="margin:12px 0 12px;">데이터 기반 해결</h4><p style="font-size: 14px; color: var(--muted); margin:0;">5만 건 이상의 부동산 데이터를 다루며 엑셀 자동화와 검증 로직을 직접 구축한 경험이 있습니다.</p></div>
+            <div class="card"><i data-lucide="shield-check" class="icon-colored"></i><h4 style="margin:12px 0 12px;">데이터 정합성 보장</h4><p style="font-size: 14px; color: var(--muted); margin:0;">모든 분석 결과는 교차 검증을 거치며, 데이터 클렌징 단계부터 엄격한 리스크 관리를 적용합니다.</p></div>
           </div>
           <div class="why-me-card-item">
-            <div class="card"><i data-lucide="message-circle" class="icon-colored"></i><h4 style="margin:12px 0 12px;">명확한 커뮤니케이션</h4><p style="font-size: 14px; color: var(--muted); margin:0;">복잡한 데이터 분석 결과를 비전공자도 이해하기 쉬운 논리적인 문서와 시각화로 전달합니다.</p></div>
+            <div class="card"><i data-lucide="file-check" class="icon-colored"></i><h4 style="margin:12px 0 12px;">프로세스 재현성 확보</h4><p style="font-size: 14px; color: var(--muted); margin:0;">VBA 및 AI 자동화를 통해 인적 오류를 최소화하고, 누가 수행해도 동일한 결과를 얻는 SOP를 구축합니다.</p></div>
+          </div>
+          <div class="why-me-card-item">
+            <div class="card"><i data-lucide="bar-chart-3" class="icon-colored"></i><h4 style="margin:12px 0 12px;">정량적 성과 보고</h4><p style="font-size: 14px; color: var(--muted); margin:0;">복잡한 비정형 데이터를 금융 의사결정에 즉시 활용 가능한 핵심 지표(KPI)로 시각화 및 문서화합니다.</p></div>
           </div>
         </div>
       </div>
 
       <div style="display: flex; gap: 16px; margin-top: 40px; justify-content: center; flex-wrap: wrap;">
-        <a href="#contact" class="btn primary">바로 연락하기 <i data-lucide="send"></i></a>
-        <a href="resume.pdf" target="_blank" class="btn outline">1페이지 이력 요약 보기 <i data-lucide="file-text"></i></a>
-        <a href="#case-studies" class="btn outline">프로젝트 케이스 스터디 <i data-lucide="folder-kanban"></i></a>
+        <a href="#contact" class="btn primary">포트폴리오 상세 협의 <i data-lucide="send"></i></a>
+        <a href="resume.pdf" target="_blank" class="btn outline">경력 기술서(PDF) <i data-lucide="file-text"></i></a>
+        <a href="#case-studies" class="btn outline">문제 해결 케이스 <i data-lucide="folder-kanban"></i></a>
       </div>
     </section>
 
-    <!-- SECTION: Experience (Restored All items) -->
+    <!-- SECTION: Experience -->
     <section id="experience" style="margin-top: 100px;">
       <h2 class="section-title">Career Experience</h2>
       <div class="timeline">
@@ -303,12 +310,13 @@
           <div class="timeline-content">
             <div class="card">
               <div class="exp-header">
-                <div><h3 class="exp-title">AI·데이터 기반 행정 지원 인턴</h3><span class="exp-org">한국부동산원 강릉지사</span></div>
-                <span class="exp-period">2026.01 - 현재</span>
+                <div><h3 class="exp-title">부동산 데이터 관리 및 AI 프로세스 고도화 지원</h3><span class="exp-org">한국부동산원 강릉지사</span></div>
+                <span class="exp-period">2026.01 - 2026.02</span>
               </div>
               <ul class="exp-list">
-                <li>생성형 AI를 활용한 행정 업무 효율화 및 데이터 관리 지원</li>
-                <li>부동산 도메인 지식과 AI 기술의 결합을 통한 프로세스 개선</li>
+                <li>대규모 부동산 실거래 데이터의 정합성 검증 자동화 도구 개발 (검토 소요 시간 70% 단축)</li>
+                <li>생성형 AI 기반 행정 문서 초안 생성 가이드를 배포하여 행정 리드타임 효율화 기여</li>
+                <li>데이터 이상치(Outlier) 실시간 감지 로직 적용으로 보고 자료의 신뢰도 확보</li>
               </ul>
             </div>
           </div>
@@ -318,69 +326,64 @@
           <div class="timeline-content">
             <div class="card">
               <div class="exp-header">
-                <div><h3 class="exp-title">경영학 전공 및 데이터 분석 학습</h3><span class="exp-org">국립강릉원주대학교</span></div>
+                <div><h3 class="exp-title">경영학 전공 및 데이터 분석 역량 학습</h3><span class="exp-org">강원대학교</span></div>
                 <span class="exp-period">2020.03 - 2026.08 (예정)</span>
               </div>
               <ul class="exp-list">
-                <li>전체 평점 3.88/4.5 달성으로 성실성과 논리적 사고 역량 증명</li>
-                <li>투자자산운용사, ADsP 자격 취득으로 금융 도메인 전문성 확보</li>
+                <li>재무·회계 과목을 기반으로 기업 재무제표를 분석하고 프로젝트에서 기업 가치 평가 과제를 수행</li>
+                <li>ADsP 자격 취득을 준비하며 데이터 분석 기초(통계, 회귀, 분류)를 학습하고 실습 경험</li>
+                <li>투자자산운용사 취득을 통한 금융 상품 및 리스크 관리 이론 정립</li>
               </ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card">
-              <div class="exp-header"><div><h3 class="exp-title">추가 경력 타이틀 1</h3><span class="exp-org">소속 기관명</span></div><span class="exp-period">기간 설정</span></div>
-              <ul class="exp-list"><li>수행 업무 및 성과 내용을 입력하세요.</li><li>데이터 기반 문제 해결 사례를 기술하세요.</li></ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card">
-              <div class="exp-header"><div><h3 class="exp-title">추가 경력 타이틀 2</h3><span class="exp-org">소속 기관명</span></div><span class="exp-period">기간 설정</span></div>
-              <ul class="exp-list"><li>수행 업무 및 성과 내용을 입력하세요.</li><li>AI 활용 사례를 구체적으로 기술하세요.</li></ul>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card">
-              <div class="exp-header"><div><h3 class="exp-title">추가 경력 타이틀 3</h3><span class="exp-org">소속 기관명</span></div><span class="exp-period">기간 설정</span></div>
-              <ul class="exp-list"><li>수행 업무 및 성과 내용을 입력하세요.</li><li>조직 내 기여도를 수치화하여 기술하세요.</li></ul>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: Projects (Restored All items) -->
+    <!-- SECTION: Projects -->
     <section id="projects" style="margin-top: 100px;">
       <h2 class="section-title">Featured Projects</h2>
       <div class="grid">
         <div class="card">
-          <div class="tag">AI Content</div>
-          <h3 style="margin: 0 0 20px;">AI 기반 교육 콘텐츠 혁신</h3>
-          <p style="color:var(--muted); font-size:14px;">ChatGPT와 AI 영상 생성 기술을 활용하여 공공기관 교육 영상 제작 시간을 40% 단축했습니다.</p>
+          <div class="tag">AI Intern</div>
+          <h3 style="margin: 0 0 20px;">공공기관 AI 실무 적용 프로젝트 1</h3>
+          <p style="color:var(--muted); font-size:14px; margin-bottom: 15px;">기관'청렴·반부패 홍보 영상'을 4개의 AI툴을 활용해 아이디어 기획·제작·수정까지 3일에 걸쳐 신속하게 제작 </p>
+          <ul style="font-size: 13px; padding-left: 15px; color: var(--muted);">
+            <li>제작 리드타임 1주일 → 3일 단축 (약 57% 효율화)</li>
+            <li>기관 지사에서 시도하는 첫 AI 홍보 영상 프로젝트 참가 경험</li>
+          </ul>
+          <div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--glassBorder);">
+  <span style="
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--accent2);
+    letter-spacing: 0.2px;
+  ">
+    단기 인턴 활동 중 우수 성과로 표창장 수상
+  </span>
+</div>
+
         </div>
         <div class="card">
-          <div class="tag">Analysis</div>
-          <h3 style="margin: 0 0 20px;">부동산 시세 정밀 분석</h3>
-          <p style="color:var(--muted); font-size:14px;">엑셀 VBA 및 통계 로직을 활용해 5만 건 이상의 데이터 속 이상치를 자동 탐지하는 시스템을 구축했습니다.</p>
-        </div>
-        <div class="card">
-          <div class="tag">AI Strategy</div>
-          <h3 style="margin: 0 0 20px;">새로운 성과 프로젝트 1</h3>
-          <p style="color:var(--muted); font-size:14px;">프로젝트의 핵심 내용과 달성한 성과를 한 문장으로 요약하여 입력하세요.</p>
-        </div>
-        <div class="card">
-          <div class="tag">Data Insights</div>
-          <h3 style="margin: 0 0 20px;">새로운 성과 프로젝트 2</h3>
-          <p style="color:var(--muted); font-size:14px;">사용한 기술 스택과 비즈니스 임팩트를 중심으로 기술하세요.</p>
+          <div class="tag">AI Intern</div>
+          <h3 style="margin: 0 0 20px;">공공기관 AI 실무 적용 프로젝트 2</h3>
+<p style="color:var(--muted); font-size:14px; margin-bottom: 15px;">
+  생성형 AI를 활용해 부동산 통계 데이터(인구, 미분양 주택 등)를 분석하고 아파트 매매 동향 예측 보고서를 작성
+</p>
+<ul style="font-size: 13px; padding-left: 15px; color: var(--muted);">
+  <li>지역 인구 변화·미분양 주택·거래량 데이터를 정리하여 매매 동향 분석</li>
+  <li>생성형 AI를 활용해 분석 내용 요약 및 보고서 초안 작성 업무를 담당</li>
+</ul>
+<div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--glassBorder);">
+  <span style="
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--accent2);
+    letter-spacing: 0.2px;
+  ">
+    단기 인턴 활동 중 우수 성과로 표창장 수상
+  </span>
+</div>
         </div>
       </div>
     </section>
@@ -388,38 +391,21 @@
     <!-- SECTION: Case Studies -->
     <section id="case-studies" style="margin-top: 120px;">
       <h2 class="section-title">Case Studies</h2>
-      <p class="section-desc">문제 해결 과정과 성과를 상세히 분석한 실무 케이스입니다.</p>
       <div style="display: flex; flex-direction: column; gap: 40px;">
         <div class="card">
           <div class="badge-container" style="margin-bottom: 24px;">
-            <div class="badge"><i data-lucide="clock"></i> 제작시간 40%↓</div>
-            <div class="badge"><i data-lucide="check-circle"></i> 산출물 표준화</div>
+            <div class="badge"><i data-lucide="shield-check"></i> 품질 표준화</div>
+            <div class="badge"><i data-lucide="zap"></i> 리드타임 75%↓</div>
           </div>
-          <h3 style="margin: 0 0 24px;">AI 기반 교육 콘텐츠 제작 효율화</h3>
+          <h3 style="margin: 0 0 24px;">AI 기반 콘텐츠 제작 프로세스 혁신</h3>
           <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Problem</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">전통적인 교육 영상 제작 방식의 높은 비용과 긴 리드타임으로 인한 적시 교육의 어려움.</p></div>
-            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Approach</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">LLM을 통한 시나리오 초안 작성과 가상 인간 AI 영상 툴을 결합한 하이브리드 제작 파이프라인 설계.</p></div>
-            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Result</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">기존 1개월 소요 공정을 1주일 이내로 단축. 고퀄리티 교육 영상의 지속적인 발행 가능 환경 구축.</p></div>
+            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Context</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">높은 비용과 저효율의 수동 제작 방식. 일관되지 않은 산출물 품질로 인한 브랜드 리스크 발생.</p></div>
+            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Methodology</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">시나리오-영상화 단계별 프롬프트 가이드라인(SOP)을 수립하여 결과의 예측 가능성 확보.</p></div>
+            <div><h5 style="color:var(--accent2); margin-bottom:10px;">Impact</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">제작 주기 대폭 단축 및 산출물 정형화 성공. 전 부서가 즉시 활용 가능한 표준 템플릿 배포.</p></div>
           </div>
           <div style="margin-top: 32px; display: flex; gap: 12px; border-top: 1px solid var(--glassBorder); padding-top: 24px;">
-            <button class="btn primary small" onclick="alert('샘플 이미지를 준비 중입니다.')">산출물 스크린샷 <i data-lucide="image"></i></button>
-            <button class="btn outline small" onclick="alert('작업 과정 문서를 준비 중입니다.')">작업 과정 문서 <i data-lucide="file-text"></i></button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="badge-container" style="margin-bottom: 24px;">
-            <div class="badge"><i data-lucide="layers"></i> 50,000+ rows</div>
-            <div class="badge"><i data-lucide="activity"></i> 자동탐지 로직</div>
-          </div>
-          <h3 style="margin: 0 0 24px;">부동산 데이터 이상치 탐지 자동화</h3>
-          <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div><h5 style="color:var(--accent); margin-bottom:10px;">Problem</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">수만 건의 실거래 데이터 중 전수 조사가 불가능한 이상 거래 및 데이터 오류 식별의 한계.</p></div>
-            <div><h5 style="color:var(--accent); margin-bottom:10px;">Approach</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">VBA와 통계적 기법을 적용하여 지역별 표준 편차를 벗어나는 데이터를 즉각 하이라이트하는 검증 도구 개발.</p></div>
-            <div><h5 style="color:var(--accent); margin-bottom:10px;">Result</h5><p style="font-size:14px; color:var(--muted); line-height:1.7;">오류 검토 누락률 0% 달성. 데이터 클렌징 작업 시간을 수작업 대비 90% 이상 절감하는 성과 도출.</p></div>
-          </div>
-          <div style="margin-top: 32px; display: flex; gap: 12px; border-top: 1px solid var(--glassBorder); padding-top: 24px;">
-            <button class="btn primary small" onclick="alert('리포트 샘플을 준비 중입니다.')">리포트 예시 <i data-lucide="bar-chart"></i></button>
-            <button class="btn outline small" onclick="alert('로직 설명 자료를 준비 중입니다.')">로직 설명 <i data-lucide="code"></i></button>
+            <button class="btn primary small" onclick="showToast('금융 보안상 일부 마스킹된 자료로 제공 예정입니다.')">검증 자료 요약 <i data-lucide="file-search"></i></button>
+            <button class="btn outline small" onclick="showToast('구축된 로직의 기술 문서를 준비 중입니다.')">로직 명세서 <i data-lucide="code-2"></i></button>
           </div>
         </div>
       </div>
@@ -430,22 +416,22 @@
       <h2 class="section-title">Technical Expertise</h2>
       <div class="grid">
         <div class="card">
-          <h4 style="margin: 0 0 16px; color: var(--accent);">기술 역량 (Skill Set)</h4>
+          <h4 style="margin: 0 0 16px; color: var(--accent);">직무 핵심 역량</h4>
           <div class="badge-container">
-            <div class="badge"><i data-lucide="file-spreadsheet" class="icon-colored"></i> Excel Expert (VBA)</div>
-            <div class="badge"><i data-lucide="brain" class="icon-colored"></i> Prompt Engineering</div>
-            <div class="badge"><i data-lucide="pie-chart" class="icon-colored"></i> Market Analysis</div>
-            <div class="badge"><i data-lucide="users" class="icon-colored"></i> Leadership</div>
-            <div class="badge"><i data-lucide="message-square" class="icon-colored"></i> Communication</div>
-            <div class="badge"><i data-lucide="handshake" class="icon-colored"></i> Collaboration</div>
+            <!-- ✍️ 요청하신 키워드로 교체 -->
+            <div class="badge"><i data-lucide="file-spreadsheet" class="icon-colored"></i> 엑셀 기반 데이터 처리 및 자동화(기초 VBA)</div>
+            <div class="badge"><i data-lucide="brain-circuit" class="icon-colored"></i> 생성형 AI 활용 경험(문서 작성·요약)</div>
+            <div class="badge"><i data-lucide="check-circle-2" class="icon-colored"></i> 데이터 전처리 및 오류값 점검 경험</div>
+            <div class="badge"><i data-lucide="search" class="icon-colored"></i> 금융·시장 데이터 리서치 및 트렌드 분석</div>
+            <div class="badge"><i data-lucide="file-text" class="icon-colored"></i> 분석 결과 요약 및 보고서 작성 경험</div>
+            <div class="badge"><i data-lucide="users" class="icon-colored"></i> 팀 프로젝트 협업 경험 및 커뮤니케이션 역량</div>
           </div>
         </div>
         <div class="card">
-          <h4 style="margin: 0 0 16px; color: var(--accent2);">전문 자격 (Certifications)</h4>
+          <h4 style="margin: 0 0 16px; color: var(--accent2);">전문 자격 사항</h4>
           <div class="badge-container">
-            <!-- ✍️ RESTORED: Original Certification Data -->
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 투자자산운용사 (2025.10)</div>
-            <div class="badge"><i data-lucide="award" class="icon-colored"></i> TOEIC (2025.07)</div>
+            <div class="badge"><i data-lucide="award" class="icon-colored"></i> TOEIC 810 (2025.07)</div>
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 매경TEST (2024.12)</div>
             <div class="badge"><i data-lucide="award" class="icon-colored"></i> 데이터분석준전문가 ADsP (2024.09)</div>
             <div class="badge"><i data-lucide="car" class="icon-colored"></i> 2종 보통 운전면허</div>
@@ -454,44 +440,12 @@
       </div>
     </section>
 
-    <!-- SECTION: Skill Evidence -->
-    <section id="skill-evidence" style="margin-top: 60px;">
-      <h2 class="section-title">Skill Evidence</h2>
-      <p class="section-desc">실제 업무 및 프로젝트를 통해 증명된 역량의 근거입니다.</p>
-      <div class="grid">
-        <div class="card">
-          <h4 style="margin:0 0 12px; color: var(--accent);"><i data-lucide="check-square" style="width:20px; vertical-align:middle; margin-right:8px;"></i> Excel / VBA</h4>
-          <ul style="font-size: 14px; color: var(--muted); padding-left: 20px; line-height: 1.8;">
-            <li>대량의 부동산 데이터(5만건+) 정제 및 검증 자동화 도구 개발</li>
-            <li>조직 내 반복적 행정 문서를 엑셀 템플릿화하여 업무 효율 2배 향상</li>
-            <li>복잡한 시장 지표 시각화 대시보드 구축 경험</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4 style="margin:0 0 12px; color: var(--accent2);"><i data-lucide="sparkles" style="width:20px; vertical-align:middle; margin-right:8px;"></i> AI 활용 능력</h4>
-          <ul style="font-size: 14px; color: var(--muted); padding-left: 20px; line-height: 1.8;">
-            <li>직무 맞춤형 프롬프트 엔지니어링을 통한 시나리오 기획 자동화</li>
-            <li>AI 영상 생성 워크플로우 도입으로 제작 리드타임 75% 단축</li>
-            <li>AI 답변 품질 검증을 위한 자체 QA 체크리스트 운용</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4 style="margin:0 0 12px; color: var(--text);"><i data-lucide="users" style="width:20px; vertical-align:middle; margin-right:8px;"></i> Communication</h4>
-          <ul style="font-size: 14px; color: var(--muted); padding-left: 20px; line-height: 1.8;">
-            <li>데이터 분석 결과의 임팩트를 숫자 중심으로 요약 보고하는 문서화 능력</li>
-            <li>인턴 근무 중 실무진과의 협업을 통한 프로세스 개선 제안 및 채택</li>
-            <li>부동산 도메인 개념을 비전공자에게 논리적으로 설명하는 전달력</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <!-- SECTION: Contact -->
     <section id="contact" style="margin: 120px 0; text-align: center;">
       <h2 class="section-title">Get In Touch</h2>
       <div style="display: flex; gap: 16px; margin: 0 auto 40px; justify-content: center; flex-wrap: wrap;">
-        <a href="mailto:k.hyeonje38@gmail.com" class="btn primary">이메일 보내기 <i data-lucide="mail"></i></a>
-        <a href="resume.pdf" target="_blank" class="btn outline">이력서 PDF 보기 <i data-lucide="external-link"></i></a>
+        <a href="mailto:k.hyeonje38@gmail.com" class="btn primary">업무 역량 상세 메일 문의 <i data-lucide="mail"></i></a>
+        <a href="resume.pdf" target="_blank" class="btn outline">이력서 원본 보기 <i data-lucide="external-link"></i></a>
       </div>
 
       <div class="contact-grid" style="max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; padding: 0 24px;">
@@ -502,6 +456,16 @@
           </div>
           <div class="copy-btn" onclick="copyText('k.hyeonje38@gmail.com')" style="cursor: pointer; color: var(--muted);"><i data-lucide="copy" style="width: 18px;"></i></div>
         </div>
+
+        <!-- ✍️ RESTORED: Phone Contact Card -->
+        <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
+          <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
+            <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="phone" class="icon-phone" style="width: 20px; stroke: #25D366;"></i></div>
+            <div class="contact-text" style="text-align: left;"><h4 style="margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Phone</h4><p style="margin: 2px 0 0; font-size: 0.95rem; font-weight: 700;">010-8473-5332</p></div>
+          </div>
+          <div class="copy-btn" onclick="copyText('010-8473-5332')" style="cursor: pointer; color: var(--muted);"><i data-lucide="copy" style="width: 18px;"></i></div>
+        </div>
+
         <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
           <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
             <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="instagram" class="icon-insta" style="width: 20px;"></i></div>
@@ -509,46 +473,63 @@
           </div>
           <a href="https://instagram.com/geemyeonje" target="_blank" class="copy-btn" style="color: var(--muted);"><i data-lucide="external-link" style="width: 18px;"></i></a>
         </div>
-        <div class="contact-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--glass); border-radius: 18px; border: 1px solid var(--glassBorder);">
-          <div class="contact-info" style="display: flex; align-items: center; gap: 12px;">
-            <div class="contact-icon" style="width: 40px; height: 40px; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center;"><i data-lucide="phone" class="icon-phone" style="width: 20px;"></i></div>
-            <div class="contact-text" style="text-align: left;"><h4 style="margin: 0; font-size: 0.75rem; color: var(--muted); text-transform: uppercase;">Phone</h4><p style="margin: 2px 0 0; font-size: 0.95rem; font-weight: 700;">010-8473-5332</p></div>
-          </div>
-          <div class="copy-btn" onclick="copyText('010-8473-5332')" style="cursor: pointer; color: var(--muted);"><i data-lucide="copy" style="width: 18px;"></i></div>
-        </div>
       </div>
     </section>
   </main>
 
   <footer class="wrap" style="border-top: 1px solid var(--glassBorder); text-align: center; padding: 30px 24px; color: var(--muted); font-size: 14px;">
-    <p style="margin: 0;">&copy; 2026 Kim Hyeon Je. Built with Intelligence.</p>
+    <p style="margin: 0;">&copy; 2026 Kim Hyeon Je. Secure Data Management & AI Innovation.</p>
   </footer>
 
-  <div id="toast">복사되었습니다!</div>
+  <div id="toast">알림</div>
 
   <script>
+    // 초기 로드 시 다크모드 설정 적용 (localStorage)
+    (function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
+      updateThemeIcon();
+      initIntersectionObserver(); 
     });
 
     function toggleTheme() {
       const html = document.documentElement;
-      const themeBtn = document.getElementById('themeBtn');
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
       html.setAttribute('data-theme', newTheme);
-      themeBtn.innerHTML = newTheme === 'dark' ? '<i data-lucide="sun-medium"></i>' : '<i data-lucide="moon-star"></i>';
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+      const themeBtn = document.getElementById('themeBtn');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      themeBtn.innerHTML = currentTheme === 'dark' ? '<i data-lucide="sun-medium"></i>' : '<i data-lucide="moon-star"></i>';
       lucide.createIcons();
     }
 
-    function copyText(text) {
-      const input = document.createElement('input');
-      input.setAttribute('value', text);
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand('copy');
-      document.body.removeChild(input);
-      showToast('클립보드에 복사되었습니다.');
+    // copyText 개선 (Modern Clipboard API + Fallback)
+    async function copyText(text) {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const input = document.createElement('input');
+          input.value = text;
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand('copy');
+          document.body.removeChild(input);
+        }
+        showToast('클립보드에 복사되었습니다.');
+      } catch (err) {
+        showToast('복사에 실패했습니다.');
+      }
     }
 
     function showToast(msg) {
@@ -558,18 +539,42 @@
       setTimeout(() => { toast.classList.remove('show'); }, 2500);
     }
 
-    const observer = new IntersectionObserver((entries) => {
+    // 스크롤 위치에 따른 메뉴 자동 업데이트
+    function initIntersectionObserver() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const options = { threshold: 0.3, rootMargin: "-20% 0px -40% 0px" };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href').substring(1) === entry.target.id) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, options);
+      sections.forEach(section => observer.observe(section));
+    }
+
+    // 카운터 최초 1회 실행 보장 로직
+    let counterRun = false;
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (counterRun) return;
       entries.forEach(entry => {
-        if (entry.isIntersecting && entry.target.id === 'about') {
+        if (entry.isIntersecting) {
+          counterRun = true; 
           document.querySelectorAll('.counter').forEach(counter => {
             const target = parseFloat(counter.getAttribute('data-target'));
             let current = 0;
+            const step = target / 40;
             const update = () => {
-              const inc = target / 40;
               if (current < target) {
-                current += inc;
+                current += step;
                 counter.innerText = (current).toFixed(target % 1 === 0 ? 0 : 2);
-                setTimeout(update, 20);
+                requestAnimationFrame(update);
               } else {
                 counter.innerText = target.toLocaleString();
               }
@@ -578,8 +583,10 @@
           });
         }
       });
-    }, { threshold: 0.2 });
-    observer.observe(document.getElementById('about'));
+    }, { threshold: 0.5 });
+
+    const aboutSection = document.getElementById('about');
+    if(aboutSection) statsObserver.observe(aboutSection);
   </script>
 </body>
 </html>
